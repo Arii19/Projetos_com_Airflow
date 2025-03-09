@@ -22,8 +22,7 @@ extract_emails = ExtraiEmailOperator(
  user="automacao@smartbreeder.com.br",
  password="sT5G@cD6u!",
 
-mail_folder_id="AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYw
-AuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA=",
+mail_folder_id="AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA=",
 
 )
 extract_emails
