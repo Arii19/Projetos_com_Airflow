@@ -1,9 +1,8 @@
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
 import os
 import pandas as pd
 import requests
+import pyodbc
+from openpyxl import load_workbook
 from io import BytesIO
 
 # Configurações Gerais
@@ -14,25 +13,11 @@ SCOPES = ['https://graph.microsoft.com/.default']
 TOKEN_URL = f'https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token'
 USER = 'automacao@smartbreeder.com.br'
 PASSWORD = 'sT5G@cD6u!'
+DB_SERVER = '10.0.1.33'
+DB_NAME = 'SmartFlow_Ariane'
+DB_USER = 'SmartFlow_Ariane'
+DB_PASSWORD = 'yWKxZoewQ2'
 MAIL_FOLDER_ID = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA='
-
-# Argumentos padrão do DAG
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
-
-# Definição do DAG
-dag = DAG(
-    'processar_emails_excel',
-    default_args=default_args,
-    schedule_interval=None,  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
-    catchup=False,
-    description='DAG para processar emails e anexos Excel do Microsoft Graph'
-)
 
 # Função para obter o token usando o fluxo ROPC
 def get_access_token():
@@ -49,6 +34,7 @@ def get_access_token():
         'grant_type': 'password'
     }
     
+    # Print da variável 'data' para verificar o que está sendo enviado para verficar se deu certo
     print("Dados enviados para autenticação:")
     print(data)
     
@@ -60,10 +46,20 @@ def get_access_token():
         print(f"Erro ao obter o token: {response.status_code}, {response.text}")
         return None
 
-# Função para ler emails e anexos
-def ler_emails_e_anexos(**kwargs):
-    access_token = kwargs['ti'].xcom_pull(task_ids='obter_token')
+# Fluxo principal
+if __name__ == "__main__":
+    token = get_access_token()
     
+    if token:
+        print("Token de acesso obtido com sucesso!")
+    else:
+        print("Erro ao obter o token de acesso.")
+
+#----------------------------------------------------ATÉ AQUI DEU CERTO------------------------------------
+
+# Função para autenticar no Microsoft Graph e obter um token de acesso
+# Função para ler emails e anexos
+def ler_emails_e_anexos(access_token):
     emails_url = f"https://graph.microsoft.com/v1.0/me/mailFolders/{MAIL_FOLDER_ID}/messages"
     headers = {
         'Authorization': f'Bearer {access_token}'
@@ -74,7 +70,7 @@ def ler_emails_e_anexos(**kwargs):
         response.raise_for_status()
         emails = response.json().get('value', [])
 
-        dfs = []
+        dfs = []  # Lista para armazenar os DataFrames
 
         for email in emails:
             email_id = email['id']
@@ -94,8 +90,8 @@ def ler_emails_e_anexos(**kwargs):
                         excel_bytes = BytesIO(excel_data)
 
                         try:
-                            df = pd.read_excel(excel_bytes, engine='openpyxl' if attachment.get('contentType') == 'application/vnd.ms-excel' else None)
-                            dfs.append(df)
+                            df = pd.read_excel(excel_bytes, engine='openpyxl' if attachment.get('contentType') == 'application/vnd.ms-excel' else None) # Lendo excel
+                            dfs.append(df) # Armazenando dataframes
                             print(f"Arquivo Excel {attachment.get('name', 'sem nome')} lido com sucesso do email {email_id}.")
                         except Exception as e:
                             print(f"Erro ao ler o arquivo Excel {attachment.get('name', 'sem nome')} do email {email_id}: {e}")
@@ -107,42 +103,35 @@ def ler_emails_e_anexos(**kwargs):
         print(f"Erro ao obter emails: {e}")
         return None
 
-    kwargs['ti'].xcom_push(key='dataframes', value=dfs) # Guardando dataframes no xcom
+    return dfs # Retorna a lista de dataframes
 
-def concatenar_dataframes(**kwargs):
-    dataframes = kwargs['ti'].xcom_pull(key='dataframes', task_ids='ler_emails')
+# Fluxo principal
+if __name__ == "__main__":
+    token = get_access_token()
 
-    if dataframes:
-        try:
-            df_final = pd.concat(dataframes, ignore_index=True)
-            print("\nDataFrame final (concatenado):")
-            print(df_final.head())
-            kwargs['ti'].xcom_push(key='df_final', value=df_final) # Guardando dataframe final no xcom
-        except Exception as e:
-            print(f"Erro ao concatenar dataframes: {e}")
+    if token:
+        print("Token de acesso obtido com sucesso!")
+        dataframes = ler_emails_e_anexos(token) # Lendo emails e anexos
+
+        if dataframes:
+            print(f"Foram encontrados {len(dataframes)} arquivos Excel nos emails.")
+
+            # Aqui você tem a lista de DataFrames 'dataframes', onde cada elemento é um DataFrame de um arquivo Excel.
+            # Você pode agora trabalhar com esses DataFrames:
+            for i, df in enumerate(dataframes):
+                print(f"\nDataFrame {i+1}:")
+                print(df.head()) # Exibindo as primeiras linhas de cada dataframe
+
+            # Se quiser, pode concatenar todos os DataFrames em um único DataFrame:
+            if dataframes: # Verifica se a lista não está vazia antes de concatenar
+                try:
+                    df_final = pd.concat(dataframes, ignore_index=True)
+                    print("\nDataFrame final (concatenado):")
+                    print(df_final.head())
+                except Exception as e:
+                    print(f"Erro ao concatenar dataframes: {e}")
+        else:
+            print("Nenhum arquivo Excel encontrado nos emails ou erro na leitura dos emails.")
+
     else:
-        print("Nenhum DataFrame encontrado para concatenar.")
-
-# Definição das tarefas
-obter_token_task = PythonOperator(
-    task_id='obter_token',
-    python_callable=get_access_token,
-    dag=dag
-)
-
-ler_emails_task = PythonOperator(
-    task_id='ler_emails',
-    python_callable=ler_emails_e_anexos,
-    provide_context=True,
-    dag=dag
-)
-
-concatenar_dataframes_task = PythonOperator(
-    task_id='concatenar_dataframes',
-    python_callable=concatenar_dataframes,
-    provide_context=True,
-    dag=dag
-)
-
-# Definição das dependências
-obter_token_task >> ler_emails_task >> concatenar_dataframes_task
+        print("Erro ao obter o token de acesso.")
