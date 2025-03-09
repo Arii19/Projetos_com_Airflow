@@ -1986,3 +1986,155 @@ Traceback (most recent call last):
 airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
 [2025-03-09T19:14:19.073+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T19:14:19.092+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.061 seconds
+[2025-03-09T19:14:49.159+0000] {processor.py:186} INFO - Started process (PID=11250) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:14:49.160+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:14:49.161+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:14:49.160+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:14:49.180+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:14:49.178+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T19:14:49.181+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:14:49.198+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.044 seconds
+[2025-03-09T19:15:19.370+0000] {processor.py:186} INFO - Started process (PID=11316) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:19.371+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:15:19.373+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:19.372+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:19.400+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:19.398+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T19:15:19.400+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:19.421+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.058 seconds
+[2025-03-09T19:15:38.101+0000] {processor.py:186} INFO - Started process (PID=11375) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:38.102+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:15:38.103+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:38.103+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:38.136+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:38.133+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T19:15:38.138+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:38.163+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.068 seconds
+[2025-03-09T19:15:40.221+0000] {processor.py:186} INFO - Started process (PID=11377) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:40.222+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:15:40.224+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:40.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:40.252+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:40.251+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T19:15:40.253+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:40.271+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.055 seconds
+[2025-03-09T19:15:45.384+0000] {processor.py:186} INFO - Started process (PID=11378) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:45.385+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:15:45.387+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:45.386+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:45.412+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:45.410+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T19:15:45.413+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:45.430+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.050 seconds
+[2025-03-09T19:15:48.432+0000] {processor.py:186} INFO - Started process (PID=11385) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:48.433+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:15:48.434+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:48.433+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:48.460+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel_operador_personalizado' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:15:48.553+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:48.553+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:15:48.572+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:15:48.572+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel_operador_personalizado to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T19:15:48.598+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.171 seconds
