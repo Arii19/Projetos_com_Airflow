@@ -1028,3 +1028,273 @@ IndentationError: expected an indented block after function definition on line 8
 [2025-03-09T18:40:23.145+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:40:23.145+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-03-09T18:40:23.168+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:40:23.167+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
 [2025-03-09T18:40:23.201+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.118 seconds
+[2025-03-09T18:40:53.794+0000] {processor.py:186} INFO - Started process (PID=7019) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:40:53.795+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:40:53.798+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:40:53.797+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:40:53.815+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:40:53.835+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:40:53.834+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:40:53.849+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:40:53.849+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:40:53.871+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.083 seconds
+[2025-03-09T18:41:24.322+0000] {processor.py:186} INFO - Started process (PID=7084) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:24.323+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:41:24.326+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:24.325+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:24.349+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:24.378+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:24.378+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:41:24.397+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:24.396+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:41:24.423+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.107 seconds
+[2025-03-09T18:41:55.319+0000] {processor.py:186} INFO - Started process (PID=7149) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:55.320+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:41:55.323+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:55.322+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:55.337+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:41:55.357+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:55.357+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:41:55.370+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:41:55.369+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:41:55.390+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T18:42:25.985+0000] {processor.py:186} INFO - Started process (PID=7214) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:25.986+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:42:25.988+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:25.987+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:26.005+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:26.021+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:26.021+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:42:26.035+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:26.035+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:42:26.056+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T18:42:56.251+0000] {processor.py:186} INFO - Started process (PID=7279) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:56.252+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:42:56.253+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:56.253+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:56.269+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:42:56.287+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:56.287+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:42:56.302+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:42:56.302+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:42:56.324+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.079 seconds
+[2025-03-09T18:43:27.081+0000] {processor.py:186} INFO - Started process (PID=7338) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:27.082+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:43:27.083+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:27.083+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:27.097+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:27.116+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:27.116+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:43:27.129+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:27.129+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:43:27.150+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T18:43:57.719+0000] {processor.py:186} INFO - Started process (PID=7403) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:57.720+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:43:57.721+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:57.721+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:57.737+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:43:57.755+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:57.755+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:43:57.768+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:43:57.768+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:43:57.789+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T18:44:27.914+0000] {processor.py:186} INFO - Started process (PID=7468) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:27.915+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:44:27.916+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:27.916+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:27.931+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:27.949+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:27.949+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:44:27.963+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:27.962+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:44:27.981+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.072 seconds
+[2025-03-09T18:44:58.239+0000] {processor.py:186} INFO - Started process (PID=7533) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:58.240+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:44:58.241+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:58.241+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:58.255+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:44:58.272+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:58.272+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:44:58.285+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:44:58.285+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to None, run_after=None
+[2025-03-09T18:44:58.306+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.072 seconds
+[2025-03-09T18:45:09.381+0000] {processor.py:186} INFO - Started process (PID=7540) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:09.382+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:09.383+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:09.383+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:09.400+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:09.399+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@,  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:09.401+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:09.418+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.043 seconds
+[2025-03-09T18:45:10.472+0000] {processor.py:186} INFO - Started process (PID=7541) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.474+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:10.476+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:10.476+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.499+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:10.498+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:10.500+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.524+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.061 seconds
+[2025-03-09T18:45:10.583+0000] {processor.py:186} INFO - Started process (PID=7542) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.585+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:10.586+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:10.586+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.601+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:10.600+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:10.601+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:10.620+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.044 seconds
+[2025-03-09T18:45:14.622+0000] {processor.py:186} INFO - Started process (PID=7543) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.623+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:14.625+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.625+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.641+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.640+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:14.642+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.662+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.045 seconds
+[2025-03-09T18:45:14.705+0000] {processor.py:186} INFO - Started process (PID=7544) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.706+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:14.707+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.707+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.724+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.723+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:14.725+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.745+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.045 seconds
+[2025-03-09T18:45:14.788+0000] {processor.py:186} INFO - Started process (PID=7545) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.789+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:14.791+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.790+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.815+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.813+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:14.816+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.844+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.061 seconds
+[2025-03-09T18:45:14.887+0000] {processor.py:186} INFO - Started process (PID=7546) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.889+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:14.890+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.890+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.906+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.905+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:14.906+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.926+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.044 seconds
+[2025-03-09T18:45:14.970+0000] {processor.py:186} INFO - Started process (PID=7547) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.971+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:14.972+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.972+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:14.986+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:14.985+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 32
+    schedule_interval=@'Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+                      ^
+SyntaxError: invalid syntax
+[2025-03-09T18:45:14.987+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:15.007+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.042 seconds
+[2025-03-09T18:45:17.157+0000] {processor.py:186} INFO - Started process (PID=7551) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:17.159+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:17.161+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:17.160+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:17.194+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:17.186+0000] {dagbag.py:484} ERROR - Failed to bag_dag: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 102, in validate
+    croniter(self._expression)
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 271, in __init__
+    self.expanded, self.nth_weekday_of_month = self.expand(
+                                               ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 1032, in expand
+    return cls._expand(expr_format, hash_id=hash_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/croniter/croniter.py", line 834, in _expand
+    raise CroniterBadCronError(cls.bad_length)
+croniter.croniter.CroniterBadCronError: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 479, in _process_modules
+    dag.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 845, in validate
+    self.timetable.validate()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/timetables/_cron.py", line 104, in validate
+    raise AirflowTimetableInvalid(str(e))
+airflow.exceptions.AirflowTimetableInvalid: Exactly 5, 6 or 7 columns has to be specified for iterator expression.
+[2025-03-09T18:45:17.194+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:17.222+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.071 seconds
+[2025-03-09T18:45:19.238+0000] {processor.py:186} INFO - Started process (PID=7552) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.239+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.240+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.240+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.267+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.363+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.363+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.383+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.383+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.410+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.177 seconds
+[2025-03-09T18:45:19.452+0000] {processor.py:186} INFO - Started process (PID=7553) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.453+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.454+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.454+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.469+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.481+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.480+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.502+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.502+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.522+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T18:45:19.564+0000] {processor.py:186} INFO - Started process (PID=7554) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.565+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.566+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.566+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.582+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.595+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.595+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.617+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.617+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.636+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.077 seconds
+[2025-03-09T18:45:19.682+0000] {processor.py:186} INFO - Started process (PID=7555) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.683+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.684+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.683+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.698+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.709+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.709+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.730+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.729+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.748+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.071 seconds
+[2025-03-09T18:45:19.790+0000] {processor.py:186} INFO - Started process (PID=7556) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.791+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.792+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.792+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.807+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.818+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.818+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.840+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.839+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.857+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.072 seconds
+[2025-03-09T18:45:19.896+0000] {processor.py:186} INFO - Started process (PID=7557) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.898+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:45:19.899+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.899+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.914+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:45:19.926+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.926+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:45:19.947+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:45:19.947+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:45:19.965+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.073 seconds

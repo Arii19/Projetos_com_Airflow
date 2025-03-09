@@ -29,7 +29,7 @@ default_args = {
 dag = DAG(
     'processar_emails_excel',
     default_args=default_args,
-    schedule_interval=None,  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
+    schedule_interval='@Daily',  # Ajuste conforme necessário (e.g., '0 * * * *' para executar a cada hora)
     catchup=False,
     description='DAG para processar emails e anexos Excel do Microsoft Graph'
 )
