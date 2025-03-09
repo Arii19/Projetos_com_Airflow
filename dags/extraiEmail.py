@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 import pandas as pd
-from extrai_email_operator import MicrosoftGraphEmailToPandasOperator # ajuste o nome do arquivo
+from extrai_email_operator import EmailOperator # ajuste o nome do arquivo
 
 # Configurações Gerais
 TENANT_ID = '57e83b7a-5313-4e94-8647-60ab90ad483a'
@@ -45,7 +45,7 @@ def concatenar_dataframes(**kwargs):
         print("Nenhum DataFrame encontrado para concatenar.")
 
 # Instanciação do operador personalizado
-ler_emails_microsoft = MicrosoftGraphEmailToPandasOperator(
+ler_emails_microsoft = EmailOperator(
     task_id='ler_emails_microsoft',
     tenant_id=TENANT_ID,
     client_id=CLIENT_ID,
