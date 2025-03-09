@@ -4784,3 +4784,60 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'custom_operators'
 [2025-03-09T22:29:33.580+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T22:29:33.605+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.067 seconds
+[2025-03-09T22:30:04.402+0000] {processor.py:186} INFO - Started process (PID=35631) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:04.404+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:30:04.405+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:04.405+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:04.439+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:04.432+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 4, in <module>
+    from custom_operators import EmailAttachmentToDataFrameOperator
+ModuleNotFoundError: No module named 'custom_operators'
+[2025-03-09T22:30:04.442+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:04.471+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.075 seconds
+[2025-03-09T22:30:35.211+0000] {processor.py:186} INFO - Started process (PID=35697) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:35.212+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:30:35.213+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:35.213+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:35.232+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:35.228+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 4, in <module>
+    from custom_operators import EmailAttachmentToDataFrameOperator
+ModuleNotFoundError: No module named 'custom_operators'
+[2025-03-09T22:30:35.234+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:35.252+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.047 seconds
+[2025-03-09T22:30:50.874+0000] {processor.py:186} INFO - Started process (PID=35763) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:50.875+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:30:50.876+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:50.876+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:50.902+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:50.897+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 4, in <module>
+    from s import EmailAttachmentToDataFrameOperator
+ModuleNotFoundError: No module named 's'
+[2025-03-09T22:30:50.904+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:50.922+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.052 seconds
+[2025-03-09T22:30:51.960+0000] {processor.py:186} INFO - Started process (PID=35764) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:51.961+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:30:51.963+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:51.962+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:52.001+0000] {processor.py:925} INFO - DAG(s) 'email_excel_to_dataframe_dag' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:30:52.099+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.098+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.110+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.110+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.119+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.119+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.131+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.130+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.139+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.139+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.147+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.146+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.155+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.155+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.156+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.156+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T22:30:52.169+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.169+0000] {dag.py:3262} INFO - Creating ORM DAG for email_excel_to_dataframe_dag
+[2025-03-09T22:30:52.180+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:30:52.179+0000] {dag.py:4180} INFO - Setting next_dagrun for email_excel_to_dataframe_dag to 2025-03-09 00:00:00+00:00, run_after=2025-03-10 00:00:00+00:00
+[2025-03-09T22:30:52.202+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.246 seconds

@@ -1,7 +1,7 @@
 from airflow import DAG
 from datetime import datetime
 from airflow.operators.python_operator import PythonOperator
-from custom_operators import EmailAttachmentToDataFrameOperator
+from extrai_email_operator import EmailAttachmentToDataFrameOperator
 
 # Função para processar os DataFrames
 def process_dataframes(**context):
