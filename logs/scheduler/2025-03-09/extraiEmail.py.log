@@ -321,3 +321,122 @@ Traceback (most recent call last):
 SyntaxError: unterminated string literal (detected at line 17)
 [2025-03-09T17:58:23.055+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T17:58:23.074+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.051 seconds
+[2025-03-09T17:58:53.812+0000] {processor.py:186} INFO - Started process (PID=1780) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:58:53.813+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T17:58:53.817+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:58:53.816+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:58:53.889+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:58:53.878+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T17:58:53.892+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:58:53.927+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.122 seconds
+[2025-03-09T17:59:24.249+0000] {processor.py:186} INFO - Started process (PID=1846) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:24.250+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T17:59:24.253+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:24.252+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:24.281+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:24.276+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T17:59:24.284+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:24.310+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.066 seconds
+[2025-03-09T17:59:54.877+0000] {processor.py:186} INFO - Started process (PID=1912) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:54.878+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T17:59:54.881+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:54.880+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:54.921+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:54.915+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T17:59:54.927+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T17:59:54.963+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.091 seconds
+[2025-03-09T18:00:25.117+0000] {processor.py:186} INFO - Started process (PID=1978) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:25.119+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:00:25.121+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:25.121+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:25.146+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:25.142+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T18:00:25.148+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:25.169+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.057 seconds
+[2025-03-09T18:00:55.690+0000] {processor.py:186} INFO - Started process (PID=2035) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:55.693+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:00:55.701+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:55.699+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:55.751+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:55.743+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T18:00:55.754+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:00:55.798+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.125 seconds
+[2025-03-09T18:01:26.011+0000] {processor.py:186} INFO - Started process (PID=2101) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:26.012+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:01:26.017+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:26.017+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:26.044+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:26.041+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T18:01:26.046+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:26.068+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.065 seconds
+[2025-03-09T18:01:56.379+0000] {processor.py:186} INFO - Started process (PID=2160) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:56.379+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:01:56.382+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:56.381+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:56.426+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:56.413+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 17
+    'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
+    ^
+SyntaxError: unterminated string literal (detected at line 17)
+[2025-03-09T18:01:56.428+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:01:56.472+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.098 seconds

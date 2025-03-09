@@ -440,3 +440,122 @@ Traceback (most recent call last):
 SyntaxError: unmatched ')'
 [2025-03-09T17:58:26.138+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
 [2025-03-09T17:58:26.183+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.086 seconds
+[2025-03-09T17:58:56.885+0000] {processor.py:186} INFO - Started process (PID=1782) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:58:56.886+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T17:58:56.888+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:58:56.888+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:58:56.901+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:58:56.900+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T17:58:56.902+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:58:56.923+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.045 seconds
+[2025-03-09T17:59:27.380+0000] {processor.py:186} INFO - Started process (PID=1848) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:27.381+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T17:59:27.384+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:27.383+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:27.401+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:27.400+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T17:59:27.402+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:27.434+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.062 seconds
+[2025-03-09T17:59:57.981+0000] {processor.py:186} INFO - Started process (PID=1914) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:57.983+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T17:59:57.988+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:57.988+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:58.019+0000] {logging_mixin.py:190} INFO - [2025-03-09T17:59:58.015+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T17:59:58.021+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T17:59:58.064+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.093 seconds
+[2025-03-09T18:00:28.228+0000] {processor.py:186} INFO - Started process (PID=1980) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:28.229+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T18:00:28.231+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:28.231+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:28.242+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:28.241+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T18:00:28.242+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:28.263+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.042 seconds
+[2025-03-09T18:00:58.712+0000] {processor.py:186} INFO - Started process (PID=2046) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:58.713+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T18:00:58.715+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:58.715+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:58.729+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:00:58.728+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T18:00:58.730+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:00:58.753+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.048 seconds
+[2025-03-09T18:01:28.859+0000] {processor.py:186} INFO - Started process (PID=2112) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:28.860+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T18:01:28.864+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:28.863+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:28.877+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:28.876+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T18:01:28.878+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:28.901+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.048 seconds
+[2025-03-09T18:01:59.148+0000] {processor.py:186} INFO - Started process (PID=2178) to work on /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:59.149+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extra_dados_climaticos.py for tasks to queue
+[2025-03-09T18:01:59.151+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:59.151+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:59.164+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:01:59.163+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extra_dados_climaticos.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extra_dados_climaticos.py", line 41
+    tarefa_1 >> tarefa_2ile_path + 'condicoes.csv')
+                                                  ^
+SyntaxError: unmatched ')'
+[2025-03-09T18:01:59.164+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extra_dados_climaticos.py
+[2025-03-09T18:01:59.186+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extra_dados_climaticos.py took 0.043 seconds

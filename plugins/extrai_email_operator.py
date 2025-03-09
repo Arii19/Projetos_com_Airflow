@@ -14,8 +14,7 @@ class ExtraiEmailOperator(BaseOperator):
  self.user = 'automacao@smartbreeder.com.br'
  self.password = 'sT5G@cD6u!'
  self.mail_folder_id =
-'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5
-IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA='
+'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA='
  self.token_url = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
  def get_access_token(self):
  #Autentica no Microsoft Graph e retorna um token de acesso.
