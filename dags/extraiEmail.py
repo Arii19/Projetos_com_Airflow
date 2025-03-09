@@ -14,7 +14,6 @@ def process_dataframes(**context):
 
 # Definição do DAG
 with DAG('email_excel_to_dataframe_dag',
-         start_date=datetime(2025, 3, 9),
          schedule_interval='@daily',
          catchup=False) as dag:
 
