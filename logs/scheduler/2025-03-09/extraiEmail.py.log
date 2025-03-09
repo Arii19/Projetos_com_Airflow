@@ -440,3 +440,93 @@ Traceback (most recent call last):
 SyntaxError: unterminated string literal (detected at line 17)
 [2025-03-09T18:01:56.428+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T18:01:56.472+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.098 seconds
+[2025-03-09T18:02:26.522+0000] {processor.py:186} INFO - Started process (PID=2226) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:26.523+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:02:26.526+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:02:26.526+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:26.549+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:02:26.544+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 10
+    super().__init__(*args, **kwargs)
+    ^^^^^
+IndentationError: expected an indented block after function definition on line 8
+[2025-03-09T18:02:26.550+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:26.571+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.054 seconds
+[2025-03-09T18:02:57.051+0000] {processor.py:186} INFO - Started process (PID=2284) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:57.052+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:02:57.054+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:02:57.054+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:57.075+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:02:57.072+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 10
+    super().__init__(*args, **kwargs)
+    ^^^^^
+IndentationError: expected an indented block after function definition on line 8
+[2025-03-09T18:02:57.076+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:02:57.095+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.050 seconds
+[2025-03-09T18:03:27.916+0000] {processor.py:186} INFO - Started process (PID=2347) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:27.917+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:03:27.920+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:03:27.919+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:27.948+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:03:27.944+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 10
+    super().__init__(*args, **kwargs)
+    ^^^^^
+IndentationError: expected an indented block after function definition on line 8
+[2025-03-09T18:03:27.949+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:27.970+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.061 seconds
+[2025-03-09T18:03:58.250+0000] {processor.py:186} INFO - Started process (PID=2401) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:58.251+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:03:58.254+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:03:58.254+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:58.279+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:03:58.275+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from extrai_email_operator import ExtraiEmailOperator
+  File "/opt/airflow/plugins/extrai_email_operator.py", line 10
+    super().__init__(*args, **kwargs)
+    ^^^^^
+IndentationError: expected an indented block after function definition on line 8
+[2025-03-09T18:03:58.280+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:03:58.303+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.059 seconds
+[2025-03-09T18:04:28.498+0000] {processor.py:186} INFO - Started process (PID=2462) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:28.499+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:04:28.504+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.503+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:28.543+0000] {processor.py:925} INFO - DAG(s) 'extract_outlook_attachments' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:28.666+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.665+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:extract_outlook_attachments
+[2025-03-09T18:04:28.680+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.680+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:extract_outlook_attachments
+[2025-03-09T18:04:28.692+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.692+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:extract_outlook_attachments
+[2025-03-09T18:04:28.707+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.707+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:extract_outlook_attachments
+[2025-03-09T18:04:28.716+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.716+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:extract_outlook_attachments
+[2025-03-09T18:04:28.730+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.730+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:extract_outlook_attachments
+[2025-03-09T18:04:28.743+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.742+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:extract_outlook_attachments
+[2025-03-09T18:04:28.743+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.743+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:04:28.759+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.759+0000] {dag.py:3262} INFO - Creating ORM DAG for extract_outlook_attachments
+[2025-03-09T18:04:28.772+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:28.772+0000] {dag.py:4180} INFO - Setting next_dagrun for extract_outlook_attachments to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:04:28.804+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.312 seconds
+[2025-03-09T18:04:53.872+0000] {processor.py:186} INFO - Started process (PID=2528) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:53.873+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:04:53.875+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:53.875+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:53.910+0000] {processor.py:925} INFO - DAG(s) 'extract_outlook_attachments' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:04:53.925+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:53.925+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:04:53.951+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:04:53.951+0000] {dag.py:4180} INFO - Setting next_dagrun for extract_outlook_attachments to 2025-03-08 00:00:00+00:00, run_after=2025-03-09 00:00:00+00:00
+[2025-03-09T18:04:53.975+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.109 seconds
