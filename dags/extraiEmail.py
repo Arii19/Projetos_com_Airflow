@@ -27,7 +27,7 @@ default_args = {
 dag = DAG(
     'processar_emails_excel_operador_personalizado',
     default_args=default_args,
-    schedule_interval=None,
+    schedule_interval='@Dayli',
     catchup=False,
     description='DAG para processar emails e anexos Excel com operador personalizado'
 )
