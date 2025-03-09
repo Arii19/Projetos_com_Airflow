@@ -705,3 +705,10 @@ IndentationError: expected an indented block after function definition on line 8
 [2025-03-09T18:17:54.794+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:17:54.794+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-03-09T18:17:54.818+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:17:54.818+0000] {dag.py:4180} INFO - Setting next_dagrun for extract_outlook_attachments to 2025-03-09 00:00:00+00:00, run_after=2025-03-10 00:00:00+00:00
 [2025-03-09T18:17:54.838+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.104 seconds
+[2025-03-09T18:18:26.220+0000] {processor.py:186} INFO - Started process (PID=4215) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:18:26.221+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T18:18:26.223+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:18:26.246+0000] {processor.py:925} INFO - DAG(s) 'extract_outlook_attachments' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T18:18:26.266+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.266+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:18:26.289+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.289+0000] {dag.py:4180} INFO - Setting next_dagrun for extract_outlook_attachments to 2025-03-09 00:00:00+00:00, run_after=2025-03-10 00:00:00+00:00
+[2025-03-09T18:18:26.310+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.095 seconds

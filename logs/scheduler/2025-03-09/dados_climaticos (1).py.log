@@ -446,3 +446,10 @@
 [2025-03-09T18:17:54.795+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:17:54.795+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-03-09T18:17:54.818+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:17:54.818+0000] {dag.py:4180} INFO - Setting next_dagrun for dados_climaticos to 2025-02-24 00:00:00+00:00, run_after=2025-03-03 00:00:00+00:00
 [2025-03-09T18:17:54.837+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dados_climaticos (1).py took 0.089 seconds
+[2025-03-09T18:18:26.231+0000] {processor.py:186} INFO - Started process (PID=4216) to work on /opt/airflow/dags/dados_climaticos (1).py
+[2025-03-09T18:18:26.232+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dados_climaticos (1).py for tasks to queue
+[2025-03-09T18:18:26.234+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.234+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dados_climaticos (1).py
+[2025-03-09T18:18:26.255+0000] {processor.py:925} INFO - DAG(s) 'dados_climaticos' retrieved from /opt/airflow/dags/dados_climaticos (1).py
+[2025-03-09T18:18:26.275+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.275+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T18:18:26.296+0000] {logging_mixin.py:190} INFO - [2025-03-09T18:18:26.296+0000] {dag.py:4180} INFO - Setting next_dagrun for dados_climaticos to 2025-02-24 00:00:00+00:00, run_after=2025-03-03 00:00:00+00:00
+[2025-03-09T18:18:26.317+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dados_climaticos (1).py took 0.091 seconds
