@@ -1,6 +1,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
-from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+from extrai_email_operator import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
 
 # Argumentos padrão do DAG
 default_args = {
