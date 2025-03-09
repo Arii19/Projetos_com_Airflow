@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 import pandas as pd
-from seu_arquivo_operador import MicrosoftGraphEmailToPandasOperator # ajuste o nome do arquivo
+from extrai_email_operator import MicrosoftGraphEmailToPandasOperator # ajuste o nome do arquivo
 
 # Configurações Gerais
 TENANT_ID = '57e83b7a-5313-4e94-8647-60ab90ad483a'
@@ -16,7 +16,7 @@ MAIL_FOLDER_ID = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAA
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
+    'start_date': datetime(2025, 3, 9),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
