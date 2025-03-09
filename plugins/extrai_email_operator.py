@@ -1,22 +1,32 @@
-from airflow.models import BaseOperator
+from airflow.models.baseoperator import BaseOperator
 from airflow.utils.decorators import apply_defaults
 import requests
 import pandas as pd
 from io import BytesIO
 
-class ProcessEmailExcelOperator(BaseOperator):
+class EmailOperator(BaseOperator):
+    """
+    Operador para ler emails e anexos Excel do Microsoft Graph e retornar DataFrames pandas.
+    """
+
+    template_fields = ('mail_folder_id',)
 
     @apply_defaults
-    def __init__(self, *args, **kwargs):
-        super(ProcessEmailExcelOperator, self).__init__(*args, **kwargs)
-        self.token_url = 'https://login.microsoftonline.com/57e83b7a-5313-4e94-8647-60ab90ad483a/oauth2/v2.0/token'
+    def __init__(self, tenant_id, client_id, client_secret, user, password, mail_folder_id, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tenant_id = '57e83b7a-5313-4e94-8647-60ab90ad483a'
         self.client_id = '7b30dbdd-373c-4326-870e-5705e4f53e12'
         self.client_secret = 'SHV8Q~F3vw53zlc6cVZ9d2Tl~QtmDi2HJXRZtcSS'
         self.user = 'automacao@smartbreeder.com.br'
-        self.password = 'sT5G@cD6u!'
-        self.mail_folder_id = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA='
+        self.password = 'sT5G@cD6u!'  
+        self.mail_folder_id = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA=' 
 
-    def get_access_token(self):
+    def execute(self, context):
+        token = self._get_access_token()
+        return self._ler_emails_e_anexos(token)
+
+    def _get_access_token(self):
+        TOKEN_URL = f'https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token'
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         data = {
             'client_id': self.client_id,
@@ -26,89 +36,43 @@ class ProcessEmailExcelOperator(BaseOperator):
             'scope': 'https://graph.microsoft.com/.default',
             'grant_type': 'password'
         }
-        response = requests.post(self.token_url, headers=headers, data=data)
+        response = requests.post(TOKEN_URL, headers=headers, data=data)
         if response.status_code == 200:
             return response.json().get('access_token')
         else:
-            self.log.error(f"Erro ao obter o token: {response.status_code}, {response.text}")
-            return None
+            raise Exception(f"Erro ao obter o token: {response.status_code}, {response.text}")
 
-    def get_emails(self, access_token):
+    def _ler_emails_e_anexos(self, access_token):
         emails_url = f"https://graph.microsoft.com/v1.0/me/mailFolders/{self.mail_folder_id}/messages"
         headers = {'Authorization': f'Bearer {access_token}'}
-        response = requests.get(emails_url, headers=headers)
-        if response.status_code == 200:
-            return response.json().get('value', [])
-        else:
-            self.log.error(f"Erro ao obter emails: {response.status_code}, {response.text}")
-            return []
-
-    def get_attachments(self, email_id, access_token):
-        attachments_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments"
-        headers = {'Authorization': f'Bearer {access_token}'}
-        response = requests.get(attachments_url, headers=headers)
-        if response.status_code == 200:
-            return response.json().get('value', [])
-        else:
-            self.log.error(f"Erro ao obter anexos do email {email_id}: {response.status_code}, {response.text}")
-            return []
-
-    def download_excel(self, attachment, email_id, access_token):
-        content_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments/{attachment['id']}/$value"
-        headers = {'Authorization': f'Bearer {access_token}'}
-        response = requests.get(content_url, headers=headers)
-        if response.status_code == 200:
-            return BytesIO(response.content)
-        else:
-            self.log.error(f"Erro ao baixar anexo {attachment.get('name')} do email {email_id}")
+        try:
+            response = requests.get(emails_url, headers=headers)
+            response.raise_for_status()
+            emails = response.json().get('value', [])
+            dfs = []
+            for email in emails:
+                email_id = email['id']
+                attachments_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments"
+                try:
+                    attachments_response = requests.get(attachments_url, headers=headers)
+                    attachments_response.raise_for_status()
+                    attachments = attachments_response.json().get('value', [])
+                    for attachment in attachments:
+                        if attachment.get('contentType') in ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']:
+                            attachment_content_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments/{attachment['id']}/$value"
+                            attachment_content_response = requests.get(attachment_content_url, headers=headers)
+                            attachment_content_response.raise_for_status()
+                            excel_data = attachment_content_response.content
+                            excel_bytes = BytesIO(excel_data)
+                            try:
+                                df = pd.read_excel(excel_bytes, engine='openpyxl' if attachment.get('contentType') == 'application/vnd.ms-excel' else None)
+                                dfs.append(df)
+                                print(f"Arquivo Excel {attachment.get('name', 'sem nome')} lido do email {email_id}.")
+                            except Exception as e:
+                                print(f"Erro ao ler o arquivo Excel {attachment.get('name', 'sem nome')} do email {email_id}: {e}")
+                except requests.exceptions.RequestException as e:
+                    print(f"Erro ao obter anexos do email {email_id}: {e}")
+        except requests.exceptions.RequestException as e:
+            print(f"Erro ao obter emails: {e}")
             return None
-
-    def execute(self, context):
-        # Step 1: Get access token
-        access_token = self.get_access_token()
-        if not access_token:
-            return
-
-        # Step 2: Get emails
-        emails = self.get_emails(access_token)
-
-        # Step 3: Process emails and attachments
-        dfs = []
-        for email in emails:
-            email_id = email['id']
-            attachments = self.get_attachments(email_id, access_token)
-
-            for attachment in attachments:
-                if attachment.get('contentType') in ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']:
-                    excel_bytes = self.download_excel(attachment, email_id, access_token)
-                    if excel_bytes:
-                        try:
-                            df = pd.read_excel(excel_bytes, engine='openpyxl' if attachment.get('contentType') == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' else None)
-                            dfs.append(df)
-                            self.log.info(f"Arquivo Excel {attachment.get('name')} lido com sucesso do email {email_id}.")
-                        except Exception as e:
-                            self.log.error(f"Erro ao ler o arquivo Excel {attachment.get('name')} do email {email_id}: {e}")
-
-        # Step 4: Concatenate dataframes
-        if dfs:
-            try:
-                df_final = pd.concat(dfs, ignore_index=True)
-                self.log.info(f"DataFrame final (concatenado): {df_final.head()}")
-            except Exception as e:
-                self.log.error(f"Erro ao concatenar dataframes: {e}")
-        else:
-            self.log.info("Nenhum DataFrame encontrado para concatenar.")
-
-# Exemplo de uso do Operator no DAG
-
-from airflow import DAG
-from datetime import datetime, timedelta
-
-# Argumentos padrão do DAG
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
+        return dfs
