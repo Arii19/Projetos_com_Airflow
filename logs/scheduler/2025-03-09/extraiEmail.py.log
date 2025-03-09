@@ -5317,3 +5317,140 @@ Traceback (most recent call last):
 ValueError: DAG is missing the start_date parameter
 [2025-03-09T22:53:09.979+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T22:53:09.999+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.056 seconds
+[2025-03-09T22:53:40.985+0000] {processor.py:186} INFO - Started process (PID=38623) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:53:40.987+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:53:40.989+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:53:40.988+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:53:41.017+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:53:41.011+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 16, in <module>
+    with DAG('email_excel_to_dataframe_dag',
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 650, in __init__
+    raise ValueError("DAG is missing the start_date parameter")
+ValueError: DAG is missing the start_date parameter
+[2025-03-09T22:53:41.020+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:53:41.050+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.072 seconds
+[2025-03-09T22:54:11.418+0000] {processor.py:186} INFO - Started process (PID=38689) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:11.419+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:54:11.420+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:11.420+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:11.442+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:11.438+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 16, in <module>
+    with DAG('email_excel_to_dataframe_dag',
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 650, in __init__
+    raise ValueError("DAG is missing the start_date parameter")
+ValueError: DAG is missing the start_date parameter
+[2025-03-09T22:54:11.443+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:11.460+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.048 seconds
+[2025-03-09T22:54:41.738+0000] {processor.py:186} INFO - Started process (PID=38755) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:41.739+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:54:41.740+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:41.740+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:41.767+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:41.764+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 4, in <module>
+    from extrai_email_operator import EmailAttachmentToDataFrameOperator
+ImportError: cannot import name 'EmailAttachmentToDataFrameOperator' from 'extrai_email_operator' (/opt/airflow/plugins/extrai_email_operator.py)
+[2025-03-09T22:54:41.769+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:54:41.788+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.056 seconds
+[2025-03-09T22:55:12.467+0000] {processor.py:186} INFO - Started process (PID=38821) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:12.468+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:12.469+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:12.468+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:12.487+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:12.484+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 4, in <module>
+    from extrai_email_operator import EmailAttachmentToDataFrameOperator
+ImportError: cannot import name 'EmailAttachmentToDataFrameOperator' from 'extrai_email_operator' (/opt/airflow/plugins/extrai_email_operator.py)
+[2025-03-09T22:55:12.488+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:12.516+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.054 seconds
+[2025-03-09T22:55:22.575+0000] {processor.py:186} INFO - Started process (PID=38822) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.577+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:22.578+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:22.578+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.604+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:22.599+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'your_operator_file'
+[2025-03-09T22:55:22.605+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.624+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.054 seconds
+[2025-03-09T22:55:22.665+0000] {processor.py:186} INFO - Started process (PID=38823) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.666+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:22.667+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:22.667+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.682+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:22.679+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'your_operator_file'
+[2025-03-09T22:55:22.683+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:22.702+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.042 seconds
+[2025-03-09T22:55:29.102+0000] {processor.py:186} INFO - Started process (PID=38849) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:29.104+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:29.105+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:29.105+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:29.133+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:29.129+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'your_operator_file'
+[2025-03-09T22:55:29.134+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:29.155+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.060 seconds
+[2025-03-09T22:55:31.582+0000] {processor.py:186} INFO - Started process (PID=38874) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:31.583+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:31.585+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:31.584+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:31.615+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:31.611+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'your_operator_file'
+[2025-03-09T22:55:31.617+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:31.638+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.061 seconds
+[2025-03-09T22:55:33.633+0000] {processor.py:186} INFO - Started process (PID=38890) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:33.635+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T22:55:33.637+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:33.636+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:33.672+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:33.667+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 3, in <module>
+    from your_operator_file import ProcessEmailExcelOperator  # Substitua pelo caminho correto do arquivo onde o operator está salvo
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'your_operator_file'
+[2025-03-09T22:55:33.674+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T22:55:33.696+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.070 seconds

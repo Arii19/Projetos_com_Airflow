@@ -7665,3 +7665,88 @@ Traceback (most recent call last):
 SyntaxError: expected '('
 [2025-03-09T22:53:01.775+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
 [2025-03-09T22:53:01.799+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.050 seconds
+[2025-03-09T22:53:31.882+0000] {processor.py:186} INFO - Started process (PID=38622) to work on /opt/airflow/dags/pipeline.py
+[2025-03-09T22:53:31.883+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pipeline.py for tasks to queue
+[2025-03-09T22:53:31.884+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:53:31.884+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:53:31.898+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:53:31.897+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/pipeline.py", line 112
+    def concatenar
+                  ^
+SyntaxError: expected '('
+[2025-03-09T22:53:31.899+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:53:31.925+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.049 seconds
+[2025-03-09T22:54:02.297+0000] {processor.py:186} INFO - Started process (PID=38688) to work on /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:02.298+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pipeline.py for tasks to queue
+[2025-03-09T22:54:02.299+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:02.299+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:02.314+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:02.313+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/pipeline.py", line 112
+    def concatenar
+                  ^
+SyntaxError: expected '('
+[2025-03-09T22:54:02.316+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:02.338+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.047 seconds
+[2025-03-09T22:54:32.639+0000] {processor.py:186} INFO - Started process (PID=38754) to work on /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:32.640+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pipeline.py for tasks to queue
+[2025-03-09T22:54:32.642+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:32.642+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:32.655+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:54:32.654+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/pipeline.py", line 112
+    def concatenar
+                  ^
+SyntaxError: expected '('
+[2025-03-09T22:54:32.655+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:54:32.673+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.039 seconds
+[2025-03-09T22:55:03.316+0000] {processor.py:186} INFO - Started process (PID=38820) to work on /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:03.317+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pipeline.py for tasks to queue
+[2025-03-09T22:55:03.319+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:03.318+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:03.335+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:03.334+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/pipeline.py", line 112
+    def concatenar
+                  ^
+SyntaxError: expected '('
+[2025-03-09T22:55:03.336+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:03.356+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.045 seconds
+[2025-03-09T22:55:33.652+0000] {processor.py:186} INFO - Started process (PID=38891) to work on /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:33.653+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pipeline.py for tasks to queue
+[2025-03-09T22:55:33.655+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:33.655+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:33.674+0000] {logging_mixin.py:190} INFO - [2025-03-09T22:55:33.673+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/pipeline.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/pipeline.py", line 112
+    def concatenar
+                  ^
+SyntaxError: expected '('
+[2025-03-09T22:55:33.675+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/pipeline.py
+[2025-03-09T22:55:33.697+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pipeline.py took 0.055 seconds
