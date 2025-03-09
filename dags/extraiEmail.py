@@ -42,7 +42,7 @@ def concatenar_dataframes(**kwargs):
     else:
         print("Nenhum DataFrame encontrado para concatenar.")
 
-ler_emails_microsoft_graph = MicrosoftGraphEmailToPandasOperator(
+ler_emails_microsoft_graph = MicrosoftGraphEmail(
     task_id='ler_emails_microsoft_graph',
     tenant_id=TENANT_ID,
     client_id=CLIENT_ID,

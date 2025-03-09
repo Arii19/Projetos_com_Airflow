@@ -1743,3 +1743,63 @@ Traceback (most recent call last):
 NameError: name 'MicrosoftGraphEmailToPandasOperator' is not defined
 [2025-03-09T19:10:23.343+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
 [2025-03-09T19:10:23.360+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.045 seconds
+[2025-03-09T19:10:53.408+0000] {processor.py:186} INFO - Started process (PID=10765) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:10:53.409+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:10:53.410+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:10:53.410+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:10:53.428+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:10:53.424+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 45, in <module>
+    ler_emails_microsoft_graph = MicrosoftGraphEmailToPandasOperator(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'MicrosoftGraphEmailToPandasOperator' is not defined
+[2025-03-09T19:10:53.429+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:10:53.448+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.044 seconds
+[2025-03-09T19:11:23.964+0000] {processor.py:186} INFO - Started process (PID=10831) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:23.966+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:11:23.967+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:11:23.967+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:23.991+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:11:23.986+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 45, in <module>
+    ler_emails_microsoft_graph = MicrosoftGraphEmailToPandasOperator(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'MicrosoftGraphEmailToPandasOperator' is not defined
+[2025-03-09T19:11:23.992+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:24.011+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.052 seconds
+[2025-03-09T19:11:54.737+0000] {processor.py:186} INFO - Started process (PID=10897) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:54.738+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:11:54.739+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:11:54.738+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:54.756+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:11:54.753+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/extraiEmail.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/extraiEmail.py", line 45, in <module>
+    ler_emails_microsoft_graph = MicrosoftGraphEmailToPandasOperator(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'MicrosoftGraphEmailToPandasOperator' is not defined
+[2025-03-09T19:11:54.758+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:11:54.780+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.048 seconds
+[2025-03-09T19:12:01.329+0000] {processor.py:186} INFO - Started process (PID=10906) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:12:01.331+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-09T19:12:01.332+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.332+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:12:01.366+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel_operador_personalizado' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-09T19:12:01.465+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.464+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.477+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.477+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.486+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.485+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.496+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.496+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.503+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.503+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.511+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.511+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.518+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.518+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.519+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.519+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-09T19:12:01.530+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.529+0000] {dag.py:3262} INFO - Creating ORM DAG for processar_emails_excel_operador_personalizado
+[2025-03-09T19:12:01.531+0000] {logging_mixin.py:190} INFO - [2025-03-09T19:12:01.531+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel_operador_personalizado to None, run_after=None
+[2025-03-09T19:12:01.552+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.228 seconds
