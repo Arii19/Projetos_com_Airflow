@@ -79,7 +79,7 @@ dag = DAG(
     description='DAG para processar emails e anexos Excel com operador personalizado'
 )
 
-def concatenar_dataframes(**kwargs):
+def converter_dataframes(**kwargs):
     """Concatena os DataFrames recebidos via XCom."""
     dataframes = kwargs['ti'].xcom_pull(task_ids='ler_emails_microsoft')
     if dataframes:
@@ -91,7 +91,7 @@ def concatenar_dataframes(**kwargs):
         except Exception as e:
             print(f"Erro ao concatenar DataFrames: {e}")
     else:
-        print("Nenhum DataFrame encontrado para concatenar.")
+        print("Nenhum DataFrame encontrado para converter.")
 
 # Instanciação do operador personalizado
 ler_emails_microsoft = EmailOperator(
@@ -106,12 +106,12 @@ ler_emails_microsoft = EmailOperator(
 )
 
 # Tarefa de concatenação
-concatenar_dataframes_task = PythonOperator(
+converter_dataframes_task = PythonOperator(
     task_id='concatenar_dataframes',
-    python_callable=concatenar_dataframes,
+    python_callable=converter_dataframes,
     provide_context=True,
     dag=dag
 )
 
 # Definição das dependências
-ler_emails_microsoft >> concatenar_dataframes_task
+ler_emails_microsoft >> converter_dataframes_task
