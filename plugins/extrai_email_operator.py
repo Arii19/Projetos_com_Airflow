@@ -3,87 +3,76 @@ from airflow.utils.decorators import apply_defaults
 import requests
 import pandas as pd
 from io import BytesIO
-import msal
-import requests
 
-# Configurações do Microsoft Graph
-TENANT_ID = "seu-tenant-id"
-CLIENT_ID = "seu-client-id"
-CLIENT_SECRET = "seu-client-secret"
-AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
-SCOPES = ["https://graph.microsoft.com/.default"]
+class EmailOperator(BaseOperator):
+    """
+    Operador para ler emails e anexos Excel do Microsoft Graph e retornar DataFrames pandas.
+    """
 
-# Função para obter o token de acesso
-def get_access_token():
-    app = msal.ConfidentialClientApplication(
-        CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET
-    )
-    token = app.acquire_token_for_client(scopes=SCOPES)
-    return token['access_token']
+    template_fields = ('mail_folder_id',)
 
-# Função para enviar o e-mail com anexo e conteúdo HTML
-def send_email_with_attachment(receiver_email, subject, html_content, attachment_data, attachment_name):
-    access_token = get_access_token()
+    @apply_defaults
+    def __init__(self, tenant_id, client_id, client_secret, user, password, mail_folder_id, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tenant_id = '57e83b7a-5313-4e94-8647-60ab90ad483a'
+        self.client_id = '7b30dbdd-373c-4326-870e-5705e4f53e12'
+        self.client_secret = 'SHV8Q~F3vw53zlc6cVZ9d2Tl~QtmDi2HJXRZtcSS'
+        self.user = 'automacao@smartbreeder.com.br'
+        self.password = 'sT5G@cD6u!'  
+        self.mail_folder_id = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA=' 
 
-    # URL da API de envio de e-mail no Microsoft Graph
-    url = "https://graph.microsoft.com/v1.0/me/sendMail"
+    def execute(self, context):
+        token = self._get_access_token()
+        return self._ler_emails_e_anexos(token)
 
-    # Cabeçalho da requisição com o token de acesso
-    headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "application/json"
-    }
+    def _get_access_token(self):
+        TOKEN_URL = f'https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token'
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        data = {
+            'client_id': self.client_id,
+            'client_secret': self.client_secret,
+            'username': self.user,
+            'password': self.password,
+            'scope': 'https://graph.microsoft.com/.default',
+            'grant_type': 'password'
+        }
+        response = requests.post(TOKEN_URL, headers=headers, data=data)
+        if response.status_code == 200:
+            return response.json().get('access_token')
+        else:
+            raise Exception(f"Erro ao obter o token: {response.status_code}, {response.text}")
 
-    # Corpo do e-mail (HTML) e dados do anexo
-    email_body = {
-        "message": {
-            "subject": subject,
-            "body": {
-                "contentType": "HTML",
-                "content": html_content
-            },
-            "toRecipients": [
-                {
-                    "emailAddress": {
-                        "address": receiver_email
-                    }
-                }
-            ],
-            "attachments": [
-                {
-                    "@odata.type": "#microsoft.graph.fileAttachment",
-                    "name": attachment_name,
-                    "contentBytes": attachment_data
-                }
-            ]
-        },
-        "saveToSentItems": "true"
-    }
-
-    # Envia o e-mail com o anexo
-    response = requests.post(url, headers=headers, json=email_body)
-
-    if response.status_code == 202:
-        print("E-mail enviado com sucesso.")
-    else:
-        print(f"Erro ao enviar o e-mail: {response.status_code}")
-        print(response.text)
-
-# Exemplo de uso da função dentro do DAG Airflow após o processo de load
-def process_load_completion():
-    # Lógica de carregamento aqui
-    # ...
-
-    # Enviar e-mail após o sucesso do load
-    receiver_email = "destinatario@exemplo.com"
-    subject = "Processo de carga concluído com sucesso"
-    html_content = "<h1>O processo foi concluído!</h1><p>O arquivo foi carregado com sucesso no sistema.</p>"
-    
-    # Exemplo de anexo (conteúdo em bytes, por exemplo, PDF ou Excel)
-    attachment_data = "conteúdo-em-bytes-aqui".encode('base64')  # Codifique o anexo em base64
-    attachment_name = "relatorio.pdf"
-    
-    send_email_with_attachment(receiver_email, subject, html_content, attachment_data, attachment_name)
-
-# Essa função seria chamada no final do seu DAG ou como tarefa final no Airflow
-process_load_completion()
+    def _ler_emails_e_anexos(self, access_token):
+        emails_url = f"https://graph.microsoft.com/v1.0/me/mailFolders/{self.mail_folder_id}/messages"
+        headers = {'Authorization': f'Bearer {access_token}'}
+        try:
+            response = requests.get(emails_url, headers=headers)
+            response.raise_for_status()
+            emails = response.json().get('value', [])
+            dfs = []
+            for email in emails:
+                email_id = email['id']
+                attachments_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments"
+                try:
+                    attachments_response = requests.get(attachments_url, headers=headers)
+                    attachments_response.raise_for_status()
+                    attachments = attachments_response.json().get('value', [])
+                    for attachment in attachments:
+                        if attachment.get('contentType') in ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']:
+                            attachment_content_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments/{attachment['id']}/$value"
+                            attachment_content_response = requests.get(attachment_content_url, headers=headers)
+                            attachment_content_response.raise_for_status()
+                            excel_data = attachment_content_response.content
+                            excel_bytes = BytesIO(excel_data)
+                            try:
+                                df = pd.read_excel(excel_bytes, engine='openpyxl' if attachment.get('contentType') == 'application/vnd.ms-excel' else None)
+                                dfs.append(df)
+                                print(f"Arquivo Excel {attachment.get('name', 'sem nome')} lido do email {email_id}.")
+                            except Exception as e:
+                                print(f"Erro ao ler o arquivo Excel {attachment.get('name', 'sem nome')} do email {email_id}: {e}")
+                except requests.exceptions.RequestException as e:
+                    print(f"Erro ao obter anexos do email {email_id}: {e}")
+        except requests.exceptions.RequestException as e:
+            print(f"Erro ao obter emails: {e}")
+            return None
+        return dfs

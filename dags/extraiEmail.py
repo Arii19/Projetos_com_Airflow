@@ -1,124 +1,117 @@
-from airflow.models import DAG
-from airflow.models.baseoperator import BaseOperator
-from airflow.utils.decorators import apply_defaults
-from airflow.utils.dates import days_ago
-import requests
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime, timedelta
 import pandas as pd
-from io import BytesIO
-from datetime import timedelta
+from extrai_email_operator import EmailOperator # ajuste o nome do arquivo
 
-# Definindo o operador EmailOperator
-class EmailOperator(BaseOperator):
-    """
-    Operador para ler emails e anexos Excel do Microsoft Graph e retornar DataFrames pandas.
-    """
 
-    @apply_defaults
-    def __init__(self, name: str, tenant_id: str, client_id: str, client_secret: str, user: str, password: str, mail_folder_id: str, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self.name = name
-        self.tenant_id = tenant_id
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self.user = user
-        self.password = password
-        self.mail_folder_id = mail_folder_id
+# Configurações Gerais
+TENANT_ID = '57e83b7a-5313-4e94-8647-60ab90ad483a'
+CLIENT_ID = '7b30dbdd-373c-4326-870e-5705e4f53e12'
+CLIENT_SECRET = 'SHV8Q~F3vw53zlc6cVZ9d2Tl~QtmDi2HJXRZtcSS'
+USER = 'automacao@smartbreeder.com.br'
+PASSWORD = 'sT5G@cD6u!'  
+MAIL_FOLDER_ID = 'AAMkADYxM2NlOTI5LWY1MTktNGMyNy1hNjY1LWJhYWJiNWZiZTgyYwAuAAAAAAC5IPjWJ04VQpYSryQAlxGRAQANCyP7qFxARatkPsS4io6hAAFQX5S3AAA=' 
 
-    def get_access_token(self):
-        TOKEN_URL = f'https://login.microsoftonline.com/{self.tenant_id}/oauth2/v2.0/token'
-        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        data = {
-            'client_id': self.client_id,
-            'client_secret': self.client_secret,
-            'username': self.user,
-            'password': self.password,
-            'scope': 'https://graph.microsoft.com/.default',
-            'grant_type': 'password'
-        }
-        response = requests.post(TOKEN_URL, headers=headers, data=data)
-        if response.status_code == 200:
-            return response.json().get('access_token')
-        else:
-            raise Exception(f"Erro ao obter o token: {response.status_code}, {response.text}")
-
-    def ler_emails_e_anexos(self, access_token):
-        emails_url = f"https://graph.microsoft.com/v1.0/me/mailFolders/{self.mail_folder_id}/messages"
-        headers = {'Authorization': f'Bearer {access_token}'}
-        try:
-            response = requests.get(emails_url, headers=headers)
-            response.raise_for_status()
-            emails = response.json().get('value', [])
-            print(f"{len(emails)} emails encontrados.")
-            for email in emails:
-                email_id = email['id']
-                attachments_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments"
-                try:
-                    attachments_response = requests.get(attachments_url, headers=headers)
-                    attachments_response.raise_for_status()
-                    attachments = attachments_response.json().get('value', [])
-                    print(f"{len(attachments)} anexos encontrados no email {email_id}.")
-                    for attachment in attachments:
-                        if attachment.get('contentType') in ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']:
-                            print(f"Lendo anexo Excel {attachment.get('name', 'sem nome')} do email {email_id}...")
-                            attachment_content_url = f"https://graph.microsoft.com/v1.0/me/messages/{email_id}/attachments/{attachment['id']}/$value"
-                            attachment_content_response = requests.get(attachment_content_url, headers=headers)
-                            attachment_content_response.raise_for_status()
-                            excel_data = attachment_content_response.content
-                            excel_bytes = BytesIO(excel_data)
-                            try:
-                                df = pd.read_excel(excel_bytes)
-                                print(f"Arquivo Excel {attachment.get('name', 'sem nome')} lido do email {email_id}.")
-                                return df
-                            except Exception as e:
-                                print(f"Erro ao ler o arquivo Excel {attachment.get('name', 'sem nome')} do email {email_id}: {e}")
-                except requests.exceptions.RequestException as e:
-                    print(f"Erro ao obter anexos do email {email_id}: {e}")
-        except requests.exceptions.RequestException as e:
-            print(f"Erro ao obter emails: {e}")
-        return None
-
-    def execute(self, context):
-        # Obtém o token de acesso
-        access_token = self.get_access_token()
-        
-        # Lê os e-mails e anexos (Excel)
-        df = self.ler_emails_e_anexos(access_token)
-        
-        # Retorna o DataFrame lido, se existir
-        if df is not None:
-            return df
-        else:
-            raise ValueError("Nenhum DataFrame foi retornado dos anexos.")
-
-# Definindo o DAG
+# Argumentos padrão do DAG
 default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': days_ago(1),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
+    "owner": "airflow",
+    "depends_on_past": False,
+    "start_date": datetime(2023, 1, 1),
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
 }
 
-with DAG(
-    dag_id='dag_leitura_email',
+# Definição do DAG
+dag = DAG(
+    "processar_emails_excel_operador",
     default_args=default_args,
-    description='DAG para ler emails e anexos Excel via Microsoft Graph',
-    schedule_interval=timedelta(days=1),
+    schedule_interval="@daily",
     catchup=False,
-) as dag:
-    
-    # Instanciando o operador EmailOperator
-    ler_email = EmailOperator(
-        task_id='ler_email_anexos',
-        name="Leitura de Email e Anexos",
-        tenant_id='seu-tenant-id',
-        client_id='seu-client-id',
-        client_secret='seu-client-secret',
-        user='seu-usuario',
-        password='sua-senha',
-        mail_folder_id='folder-id-dos-emails',
-    )
+    description="DAG para processar emails e anexos Excel com operador personalizado",
+)
 
-    ler_email
+def concatenar_dataframes(**kwargs):
+    """Concatena os DataFrames recebidos via XCom."""
+    dataframes = kwargs["ti"].xcom_pull(task_ids="ler_emails_microsoft")
+    if dataframes:
+        try:
+            df_final = pd.concat(dataframes, ignore_index=True)
+            print("\nDataFrame final (concatenado):")
+            print(df_final.head())
+            kwargs["ti"].xcom_push(
+                key="df_final", value=df_final
+            )  # Armazena DataFrame concatenado no XCom
+        except Exception as e:
+            print(f"Erro ao concatenar DataFrames: {e}")
+    else:
+        print("Nenhum DataFrame encontrado para concatenar.")
+
+# Instanciação do operador personalizado
+ler_emails_microsoft = EmailOperator(
+    task_id="ler_emails_microsoft",
+    tenant_id=TENANT_ID,
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    user=USER,
+    password=PASSWORD,
+    mail_folder_id=MAIL_FOLDER_ID,
+    dag=dag,
+)
+
+# Tarefa de concatenação
+concatenar_dataframes_task = PythonOperator(
+    task_id="concatenar_dataframes",
+    python_callable=concatenar_dataframes,
+    provide_context=True,
+    dag=dag,
+)
+
+# Definição das dependências
+ler_emails_microsoft >> concatenar_dataframes_task
+
+# Definição do DAG
+dag = DAG(
+    'processar_emails_excel_operador',
+    default_args=default_args,
+    schedule_interval='@daily',  # ou outro intervalo de agendamento desejado
+    catchup=False,
+    description='DAG para processar emails e anexos Excel com operador personalizado'
+)
+
+def converter_dataframes(**kwargs):
+    """Concatena os DataFrames recebidos via XCom."""
+    dataframes = kwargs['ti'].xcom_pull(task_ids='ler_emails_microsoft')
+    if dataframes:
+        try:
+            df_final = pd.concat(dataframes, ignore_index=True)
+            print("\nDataFrame final (concatenado):")
+            print(df_final.head())
+            kwargs['ti'].xcom_push(key='df_final', value=df_final)  # Armazena DataFrame concatenado no XCom
+        except Exception as e:
+            print(f"Erro ao concatenar DataFrames: {e}")
+    else:
+        print("Nenhum DataFrame encontrado para converter.")
+
+# Instanciação do operador personalizado
+ler_emails_microsoft = EmailOperator(
+    task_id='ler_emails_microsoft',
+    tenant_id=TENANT_ID,
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    user=USER,
+    password=PASSWORD,
+    mail_folder_id=MAIL_FOLDER_ID,
+    dag=dag
+)
+
+# Tarefa de concatenação
+converter_dataframes_task = PythonOperator(
+    task_id='concatenar_dataframes',
+    python_callable=converter_dataframes,
+    provide_context=True,
+    dag=dag
+)
+
+# Definição das dependências
+ler_emails_microsoft >> converter_dataframes_task
