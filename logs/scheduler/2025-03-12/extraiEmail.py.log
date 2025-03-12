@@ -1,0 +1,50 @@
+[2025-03-12T23:31:00.985+0000] {processor.py:186} INFO - Started process (PID=75) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:00.987+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:31:00.995+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:00.994+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:01.038+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel_operador' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:01.105+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:01.104+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:31:01.153+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:01.152+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel_operador to 2025-03-11 00:00:00+00:00, run_after=2025-03-12 00:00:00+00:00
+[2025-03-12T23:31:01.192+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.216 seconds
+[2025-03-12T23:31:31.625+0000] {processor.py:186} INFO - Started process (PID=142) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:31.627+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:31:31.630+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:31.629+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:31.662+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel_operador' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:31:31.723+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:31.723+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:31:31.765+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:31:31.764+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel_operador to 2025-03-12 00:00:00+00:00, run_after=2025-03-13 00:00:00+00:00
+[2025-03-12T23:31:31.825+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.213 seconds
+[2025-03-12T23:32:02.699+0000] {processor.py:186} INFO - Started process (PID=208) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:02.701+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:32:02.704+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:02.704+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:02.728+0000] {processor.py:925} INFO - DAG(s) 'processar_emails_excel_operador' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:02.750+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:02.750+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:32:02.791+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:02.790+0000] {dag.py:4180} INFO - Setting next_dagrun for processar_emails_excel_operador to 2025-03-12 00:00:00+00:00, run_after=2025-03-13 00:00:00+00:00
+[2025-03-12T23:32:02.844+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.156 seconds
+[2025-03-12T23:32:10.772+0000] {processor.py:186} INFO - Started process (PID=233) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:10.774+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:32:10.779+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.778+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:10.813+0000] {processor.py:925} INFO - DAG(s) 'dag_leitura_email' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:10.938+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.937+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:dag_leitura_email
+[2025-03-12T23:32:10.954+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.953+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:dag_leitura_email
+[2025-03-12T23:32:10.965+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.964+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:dag_leitura_email
+[2025-03-12T23:32:10.980+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.979+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:dag_leitura_email
+[2025-03-12T23:32:10.992+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:10.991+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:dag_leitura_email
+[2025-03-12T23:32:11.002+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:11.001+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:dag_leitura_email
+[2025-03-12T23:32:11.011+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:11.010+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:dag_leitura_email
+[2025-03-12T23:32:11.012+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:11.011+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:32:11.028+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:11.028+0000] {dag.py:3262} INFO - Creating ORM DAG for dag_leitura_email
+[2025-03-12T23:32:11.039+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:11.038+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_leitura_email to 2025-03-11 00:00:00+00:00, run_after=2025-03-12 00:00:00+00:00
+[2025-03-12T23:32:11.070+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.303 seconds
+[2025-03-12T23:32:41.702+0000] {processor.py:186} INFO - Started process (PID=299) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:41.703+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:32:41.706+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:41.705+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:41.727+0000] {processor.py:925} INFO - DAG(s) 'dag_leitura_email' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:32:41.762+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:41.762+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:32:41.798+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:32:41.798+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_leitura_email to 2025-03-11 00:00:00+00:00, run_after=2025-03-12 00:00:00+00:00
+[2025-03-12T23:32:41.822+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.126 seconds
+[2025-03-12T23:33:12.887+0000] {processor.py:186} INFO - Started process (PID=365) to work on /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:33:12.889+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/extraiEmail.py for tasks to queue
+[2025-03-12T23:33:12.892+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:33:12.892+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:33:12.914+0000] {processor.py:925} INFO - DAG(s) 'dag_leitura_email' retrieved from /opt/airflow/dags/extraiEmail.py
+[2025-03-12T23:33:12.955+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:33:12.954+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-12T23:33:12.999+0000] {logging_mixin.py:190} INFO - [2025-03-12T23:33:12.998+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_leitura_email to 2025-03-11 00:00:00+00:00, run_after=2025-03-12 00:00:00+00:00
+[2025-03-12T23:33:13.074+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/extraiEmail.py took 0.197 seconds
