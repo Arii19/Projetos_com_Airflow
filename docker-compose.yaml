@@ -86,6 +86,11 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+  airflow-webserver:
+    image: apache/airflow:3.0.1
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - _PIP_ADDITIONAL_REQUIREMENTS=apache-airflow-providers-microsoft-mssql
   postgres:
     image: postgres:13
     environment:
