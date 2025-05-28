@@ -65,7 +65,7 @@ def DadosMeteorologicosOpenMeteo():
             print("DataFrame vazio — nada a inserir.")
             return
 
-        mssql_hook = MsSqlHook(mssql_conn_id='SmartFlow_Ariane')
+        mssql_hook = MsSqlHook(mssql_conn_id='mssql_conn')
         try:
             mssql_hook.insert_rows(
                 table='OpenMeteo',
