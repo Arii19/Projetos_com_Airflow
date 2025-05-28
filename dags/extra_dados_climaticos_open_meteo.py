@@ -3,7 +3,7 @@ import pandas as pd
 import hashlib
 import pendulum 
 from airflow.decorators import dag, task
-from airflow.providers.microsoft.mssql.hooks.mssql import MsSqlHook
+#from airflow.providers.microsoft.mssql.hooks.mssql import MsSqlHook
 from airflow.models import Variable
 
 @dag(
@@ -54,7 +54,7 @@ def DadosMeteorologicosOpenMeteo():
         print(df.head())
         return df
     
-    @task()
+  '''  @task()
     def load(dados):
         df = pd.DataFrame(dados)
         print("DataFrame reconstruído na load:")
@@ -74,7 +74,7 @@ def DadosMeteorologicosOpenMeteo():
             )
             print("Dados inseridos com sucesso!")
         except Exception as e:
-            print(f"Erro ao inserir dados: {e}")
+            print(f"Erro ao inserir dados: {e}")'''
 
 
     
@@ -82,6 +82,6 @@ def DadosMeteorologicosOpenMeteo():
 
     dadosometeo = extract()
     df_transformado = transform(dadosometeo)
-    load(df_transformado)
+    #load(df_transformado)
     
 DadosMeteorologicosOpenMeteo()
