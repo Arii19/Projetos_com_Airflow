@@ -101,6 +101,20 @@ services:
       start_period: 5s
     restart: always
 
+      sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Delt@97242914"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -U sa -P Delt@97242914 -Q 'SELECT 1'"]
+      interval: 10s
+      retries: 5
+    networks:
+      - airflow-net
+
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
     # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
