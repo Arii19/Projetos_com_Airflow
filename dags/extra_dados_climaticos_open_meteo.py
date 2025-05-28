@@ -54,11 +54,34 @@ def DadosMeteorologicosOpenMeteo():
         print(df.head())
         return df
     
+    @task()
+    def load(dados):
+        df = pd.DataFrame(dados)
+        print("DataFrame reconstruído na load:")
+        print(df.head())
+        print(f"Quantidade de linhas: {len(df)}")
+
+        if df.empty:
+            print("DataFrame vazio — nada a inserir.")
+            return
+
+        mssql_hook = MsSqlHook(mssql_conn_id='SmartFlow_Ariane')
+        try:
+            mssql_hook.insert_rows(
+                table='OpenMeteo',
+                rows=list(df.itertuples(index=False, name=None)),
+                target_fields=list(df.columns.values)
+            )
+            print("Dados inseridos com sucesso!")
+        except Exception as e:
+            print(f"Erro ao inserir dados: {e}")
+
+
     
 
 
-
     dadosometeo = extract()
-    transform(dadosometeo)
+    df_transformado = transform(dadosometeo)
+    load(df_transformado)
     
 DadosMeteorologicosOpenMeteo()
