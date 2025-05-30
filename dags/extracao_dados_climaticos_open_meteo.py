@@ -1,10 +1,7 @@
+from airflow.decorators import dag, task
 import requests
 import pandas as pd
-import hashlib
-import pendulum 
-from airflow.decorators import dag, task
-from airflow.providers.microsoft.mssql.hooks.mssql import MsSqlHook
-from airflow.models import Variable
+import pendulum
 
 @dag(
     schedule='@daily',
@@ -13,9 +10,9 @@ from airflow.models import Variable
     tags=["open-meteo", "SQLServer", "API", "DadosMeteorologicos"],
 )
 def DadosMeteorologicosOpenMeteo():
-    
-      @task(retries=3)
-      def extract():
+
+    @task(retries=3)
+    def extract():
         url = (
             "https://api.open-meteo.com/v1/forecast?"
             "latitude=-21.6853&longitude=-51.0725&"
@@ -26,13 +23,11 @@ def DadosMeteorologicosOpenMeteo():
         response = requests.get(url)
         if response.status_code != 200:
             raise Exception(f"Erro ao acessar a API: {response.status_code}")
-    
+
         dados = response.json()
-    
-        # Pega o array de horas para indexar o dataframe
+
         times = dados["hourly"]["time"]  # lista de horários no formato ISO
-    
-        # Monta o dataframe com os dados por hora
+
         df = pd.DataFrame({
             "time": times,
             "temperature_2m": dados["hourly"]["temperature_2m"],
@@ -45,21 +40,19 @@ def DadosMeteorologicosOpenMeteo():
             "soil_temperature_0cm": dados["hourly"]["soil_temperature_0cm"],
             "soil_moisture_0_to_1cm": dados["hourly"]["soil_moisture_0_to_1cm"]
         })
-    
-        # Adiciona colunas fixas que são no topo do JSON, para todas as linhas
+
         df["latitude"] = dados["latitude"]
         df["longitude"] = dados["longitude"]
         df["generationtime_ms"] = dados["generationtime_ms"]
         df["utc_offset_seconds"] = dados["utc_offset_seconds"]
         df["timezone"] = dados["timezone"]
         df["elevation"] = dados["elevation"]
-    
+
         print("DataFrame extraído:")
         print(df.head())
         return df
 
-
-
     dados = extract()
-    
+
+# Instancia a DAG para o Airflow registrar
 DadosMeteorologicosOpenMeteo()
