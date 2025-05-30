@@ -1,0 +1,13 @@
+# Ignorar logs do Airflow
+logs/
+
+# Ignorar arquivos de ambiente virtual
+.venv/
+
+# Ignorar arquivos Python compilados
+__pycache__/
+*.pyc
+
+# Ignorar arquivos de configuração locais
+.env
+airflow.cfg
