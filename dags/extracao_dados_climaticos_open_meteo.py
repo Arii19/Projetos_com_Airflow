@@ -97,7 +97,26 @@ def DadosMeteorologicosOpenMeteo():
         print(df.head())
         return df
 
+    @task()
+    def load(df):
+        # Conecta ao SQL Server
+        mssql_hook = MsSqlHook(mssql_conn_id='ARIANE_AIRFLOW')
+        try:
+            # Insere os dados no SQL Server
+            mssql_hook.insert_rows(
+                table='DadosClimaticos_OpenMeteo',
+                rows=list(df.itertuples(index=False, name=None)),
+                target_fields=list(df.columns),
+                replace=False  # Use True se quiser sobrescrever
+            )
+            print("Dados inseridos com sucesso.")
+        except Exception as e:
+            print(f"Erro ao inserir dados: {e}")
+            raise
+
+    # Encadeamento das tarefas
     dados = extract()
     transform(dados)
+    load(dados)
 
 DadosMeteorologicosOpenMeteo()
