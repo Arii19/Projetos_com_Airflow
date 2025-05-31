@@ -100,7 +100,7 @@ def DadosMeteorologicosOpenMeteo():
     @task()
     def load(df):
         # Conecta ao SQL Server
-        mssql_hook = MsSqlHook(mssql_conn_id='ARIANE_AIRFLOW')
+        mssql_hook = MsSqlHook(mssql_conn_id='Airflow_Ariane')
         try:
             # Insere os dados no SQL Server
             mssql_hook.insert_rows(
