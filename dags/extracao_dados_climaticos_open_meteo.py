@@ -93,6 +93,9 @@ def DadosMeteorologicosOpenMeteo():
         # Converte valores vazios para None (que vira NULL no SQL)
         df = df.where(pd.notnull(df), None)
 
+        # Converte DataHora para datetime no formato aceito pelo SQL Server
+        df["DataHora"] = df["DataHora"].dt.strftime('%Y-%m-%d %H:%M:%S')
+
         print("DataFrame transformado:")
         print(df.head())
         return df
