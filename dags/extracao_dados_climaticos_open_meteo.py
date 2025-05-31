@@ -14,7 +14,7 @@ from airflow.models import Variable
 )
 def DadosMeteorologicosOpenMeteo():
 
-    @task(retries=3)
+    @task#(retries=3)
     def extract():
         url = (
             "https://api.open-meteo.com/v1/forecast?"
@@ -50,7 +50,6 @@ def DadosMeteorologicosOpenMeteo():
         })
         print("DataFrame extraído:")
         print(df.head())
-        return df
         df.to_csv('C:/Users/Microsoft/Documents/Alura/dados_climaticos.csv', index=False)
         return df
         
