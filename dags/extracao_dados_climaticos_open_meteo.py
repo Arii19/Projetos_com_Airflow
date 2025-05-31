@@ -94,6 +94,7 @@ def DadosMeteorologicosOpenMeteo():
         df = df.where(pd.notnull(df), None)
 
         # Converte DataHora para datetime no formato aceito pelo SQL Server
+        df["DataHora"] = pd.to_datetime(df["DataHora"], errors='coerce')
         df["DataHora"] = df["DataHora"].dt.strftime('%Y-%m-%d %H:%M:%S')
 
         print("DataFrame transformado:")
