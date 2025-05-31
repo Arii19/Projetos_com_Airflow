@@ -51,6 +51,10 @@ def DadosMeteorologicosOpenMeteo():
         print("DataFrame extraído:")
         print(df.head())
         return df
+        df.to_csv('C:/Users/Microsoft/Documents/Alura/dados_climaticos.csv', index=False)
+        return df
+        
+
 
     dados = extract()
 
