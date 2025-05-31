@@ -84,9 +84,10 @@ def DadosMeteorologicosOpenMeteo():
 
         # Reordena as colunas
         df = df[
-            [            dados = extract()
-            dados_tratados = transform(dados)
-            load(dados_tratados)]
+            ["Id", "DataHora", "Latitude", "Longitude", "TempoGeracaoMs", "OffsetUtcSegundos",
+             "FusoHorario", "Elevacao", "Temperatura2m", "UmidadeRelativa2m", "Chuva",
+             "CoberturaNuvens", "Visibilidade", "VelocidadeVento10m", "DirecaoVento10m",
+             "TemperaturaSolo0cm", "UmidadeSolo0a1cm"]
         ]
 
         # Converte valores vazios para None (que vira NULL no SQL)
@@ -114,8 +115,8 @@ def DadosMeteorologicosOpenMeteo():
             raise
 
     # Encadeamento das tarefas
- dados = extract()
- dados_tratados = transform(dados)
- load(dados_tratados)
+    dados = extract()
+    dados_tratados = transform(dados)
+    load(dados_tratados)
 
 DadosMeteorologicosOpenMeteo()
