@@ -14,7 +14,7 @@ from airflow.models import Variable
 )
 def DadosMeteorologicosOpenMeteo():
 
-    @task#(retries=3)
+    @task
     def extract():
         url = (
             "https://api.open-meteo.com/v1/forecast?"
@@ -53,49 +53,49 @@ def DadosMeteorologicosOpenMeteo():
         df.to_csv('/opt/airflow/dags/dados_climaticos.csv', index=False)
         return df
 
-        @task
-        def transform(df):
+    @task
+    def transform(df):
         # Renomeia as colunas conforme solicitado
-           df = df.rename(columns={
-          "time": "DataHora",
-          "latitude": "Latitude",
-          "longitude": "Longitude",
-          "generationtime_ms": "TempoGeracaoMs",
-          "utc_offset_seconds": "OffsetUtcSegundos",
-          "timezone": "FusoHorario",
-          "elevation": "Elevacao",
-          "temperature_2m": "Temperatura2m",
-          "relative_humidity_2m": "UmidadeRelativa2m",
-          "rain": "Chuva",
-          "cloud_cover": "CoberturaNuvens",
-          "visibility": "Visibilidade",
-          "wind_speed_10m": "VelocidadeVento10m",
-          "wind_direction_10m": "DirecaoVento10m",
-          "soil_temperature_0cm": "TemperaturaSolo0cm",
-          "soil_moisture_0_to_1cm": "UmidadeSolo0a1cm"
+        df = df.rename(columns={
+            "time": "DataHora",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "generationtime_ms": "TempoGeracaoMs",
+            "utc_offset_seconds": "OffsetUtcSegundos",
+            "timezone": "FusoHorario",
+            "elevation": "Elevacao",
+            "temperature_2m": "Temperatura2m",
+            "relative_humidity_2m": "UmidadeRelativa2m",
+            "rain": "Chuva",
+            "cloud_cover": "CoberturaNuvens",
+            "visibility": "Visibilidade",
+            "wind_speed_10m": "VelocidadeVento10m",
+            "wind_direction_10m": "DirecaoVento10m",
+            "soil_temperature_0cm": "TemperaturaSolo0cm",
+            "soil_moisture_0_to_1cm": "UmidadeSolo0a1cm"
         })
 
-          # Gera um Id único para cada linha
-          df["Id"] = (
-              df["DataHora"].astype(str) + "_" +
-              df["Latitude"].astype(str) + "_" +
-              df["Longitude"].astype(str)
-          ).apply(lambda x: hashlib.md5(x.encode()).hexdigest())    
-          # Reordena as colunas
-          df = df[[
-              "Id", "DataHora", "Latitude", "Longitude", "TempoGeracaoMs", "OffsetUtcSegundos",
-              "FusoHorario", "Elevacao", "Temperatura2m", "UmidadeRelativa2m", "Chuva",
-              "CoberturaNuvens", "Visibilidade", "VelocidadeVento10m", "DirecaoVento10m",
-              "TemperaturaSolo0cm", "UmidadeSolo0a1cm"
-        ]]
+        # Gera um Id único para cada linha
+        df["Id"] = (
+            df["DataHora"].astype(str) + "_" +
+            df["Latitude"].astype(str) + "_" +
+            df["Longitude"].astype(str)
+        ).apply(lambda x: hashlib.md5(x.encode()).hexdigest())
 
-            # Converte valores vazios para None (que vira NULL no SQL)
-            df = df.where(pd.notnull(df), None)
+        # Reordena as colunas
+        df = df[
+            ["Id", "DataHora", "Latitude", "Longitude", "TempoGeracaoMs", "OffsetUtcSegundos",
+             "FusoHorario", "Elevacao", "Temperatura2m", "UmidadeRelativa2m", "Chuva",
+             "CoberturaNuvens", "Visibilidade", "VelocidadeVento10m", "DirecaoVento10m",
+             "TemperaturaSolo0cm", "UmidadeSolo0a1cm"]
+        ]
 
-            print("DataFrame transformado:")
-            print(df.head())
-            return df
+        # Converte valores vazios para None (que vira NULL no SQL)
+        df = df.where(pd.notnull(df), None)
 
+        print("DataFrame transformado:")
+        print(df.head())
+        return df
 
     dados = extract()
     transform(dados)
