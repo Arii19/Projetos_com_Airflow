@@ -84,10 +84,9 @@ def DadosMeteorologicosOpenMeteo():
 
         # Reordena as colunas
         df = df[
-            ["Id", "DataHora", "Latitude", "Longitude", "TempoGeracaoMs", "OffsetUtcSegundos",
-             "FusoHorario", "Elevacao", "Temperatura2m", "UmidadeRelativa2m", "Chuva",
-             "CoberturaNuvens", "Visibilidade", "VelocidadeVento10m", "DirecaoVento10m",
-             "TemperaturaSolo0cm", "UmidadeSolo0a1cm"]
+            [            dados = extract()
+            dados_tratados = transform(dados)
+            load(dados_tratados)]
         ]
 
         # Converte valores vazios para None (que vira NULL no SQL)
@@ -107,7 +106,7 @@ def DadosMeteorologicosOpenMeteo():
                 table='DadosClimaticos_OpenMeteo',
                 rows=list(df.itertuples(index=False, name=None)),
                 target_fields=list(df.columns),
-                replace=False  # Use True se quiser sobrescrever
+                replace=True 
             )
             print("Dados inseridos com sucesso.")
         except Exception as e:
@@ -115,8 +114,8 @@ def DadosMeteorologicosOpenMeteo():
             raise
 
     # Encadeamento das tarefas
-    dados = extract()
-    transform(dados)
-    load(dados)
+ dados = extract()
+ dados_tratados = transform(dados)
+ load(dados_tratados)
 
 DadosMeteorologicosOpenMeteo()
