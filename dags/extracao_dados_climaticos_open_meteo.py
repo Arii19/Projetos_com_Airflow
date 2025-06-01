@@ -113,15 +113,17 @@ def DadosMeteorologicosOpenMeteo():
     @task()
     def load(df):
         try:
-            # Conecta ao SQL Server
             mssql_hook = MsSqlHook(mssql_conn_id='Airflow_Ariane')
-            # Insere os dados no SQL Server
+            conn = mssql_hook.get_conn()
+            cursor = conn.cursor()
             for row in df.itertuples(index=False, name=None):
-                parametros = ",".join(
-                    [f"'{str(x).replace("'", "''")}'" if x is not None else "NULL" for x in row]
+                cursor.execute(
+                    "EXEC sp_Merge_DadosClimaticos_OpenMeteo %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                    row
                 )
-                sql = f"EXEC sp_Merge_DadosClimaticos_OpenMeteo {parametros}"
-                mssql_hook.run(sql)
+            conn.commit()
+            cursor.close()
+            conn.close()
             print("Dados inseridos com sucesso.")
         except Exception as e:
             loki.SendLog('dag=extracao_dados_climaticos_open_meteo def=load log_level=ERRO message="'+str(e)+'"')
