@@ -31,8 +31,8 @@ def DadosMeteorologicosOpenMeteo():
         hourly = dados["hourly"]
         n = len(hourly["time"])
         df = pd.DataFrame({
-            "latitude": [int dados["latitude"]]*n,
-            "longitude": [int dados["longitude"]]*n,
+            "latitude": [int(dados["latitude"])] * n,,
+            "longitude": [int (dados["longitude"])]*n,
             "elevation": [dados["elevation"]]*n,
             "generationtime_ms": [dados["generationtime_ms"]]*n,
             "utc_offset_seconds": [dados["utc_offset_seconds"]]*n,
