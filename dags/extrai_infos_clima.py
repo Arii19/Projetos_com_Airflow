@@ -1,5 +1,4 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.macros import ds_add
 import pendulum
@@ -12,12 +11,6 @@ with DAG(
     start_date=pendulum.datetime(2025, 2, 22, tz="UTC"),
     schedule='0 0 * * 1',  # executar toda segunda feira
 ) as dag:
-
-    tarefa_1 = BashOperator(
-        task_id='cria_pasta',
-        bash_command='mkdir "{{ params.dir_path }}"',
-        params={'dir_path': r'C:\Users\Microsoft\Documents\PYTHON\extra-_dados_climaticos\semana={{data_interval_end.strftime("%Y-%m-%d")}}'}
-    )
 
     def extrai_dados(data_interval_end):
         from urllib.parse import quote
@@ -39,10 +32,8 @@ with DAG(
         dados[['datetime', 'tempmin', 'temp', 'tempmax']].to_csv(file_path + 'temperaturas.csv', index=False)
         dados[['datetime', 'description', 'icon']].to_csv(file_path + 'condicoes.csv', index=False)
 
-    tarefa_2 = PythonOperator(
+    tarefa_1 = PythonOperator(
         task_id='extrai_dados',
         python_callable=extrai_dados,
         op_kwargs={'data_interval_end': '{{ data_interval_end.strftime("%Y-%m-%d") }}'}
     )
-
-    tarefa_1 >> tarefa_2
