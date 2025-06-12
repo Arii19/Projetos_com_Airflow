@@ -44,5 +44,4 @@ with DAG(
     )
 
     tarefa_1 >> tarefa_2
-
-extrai_infos_clima()
+    
