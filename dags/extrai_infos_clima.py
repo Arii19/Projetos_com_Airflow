@@ -20,7 +20,8 @@ with DAG(
     )
 
     def extrai_dados(data_interval_end):
-        city = 'Flórida Paulista, SP'
+        from urllib.parse import quote
+        city = quote('Flórida Paulista, SP')
         key = '4E2UJES7SSQUDQK7Z5QQ4L6RY'
 
         URL = join(
@@ -28,7 +29,8 @@ with DAG(
             f'{city}/{data_interval_end}/{ds_add(data_interval_end, 7)}?unitGroup=metric&include=days&key={key}&contentType=csv'
         )
 
-        dados = pd.read_csv(URL)
+        print("URL usada:", URL)
+        dados = pd.read_csv(URL, encoding='utf-8')
 
         file_path = rf'C:\Users\Microsoft\Documents\PYTHON\extra-_dados_climaticos\semana={data_interval_end}\\'
         os.makedirs(file_path, exist_ok=True)
@@ -44,4 +46,3 @@ with DAG(
     )
 
     tarefa_1 >> tarefa_2
-    
