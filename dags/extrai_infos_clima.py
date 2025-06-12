@@ -20,8 +20,8 @@ with DAG(
     )
 
     def extrai_dados(data_interval_end):
-        city = 'Boston'
-        key = 'ANZQ5K8QQP8BXZ85F4ZEQ2FPK'
+        city = 'Flórida Paulista, SP'
+        key = '4E2UJES7SSQUDQK7Z5QQ4L6RY'
 
         URL = join(
             'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/',
