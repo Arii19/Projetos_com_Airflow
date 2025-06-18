@@ -59,7 +59,7 @@ def extrair_americanas(url):
 
 @dag(
     schedule='@daily',
-    start_date=pendulum.date_
+    start_date=pendulum.date(2024, 6, 1)
 )
 def main_dag():
 
