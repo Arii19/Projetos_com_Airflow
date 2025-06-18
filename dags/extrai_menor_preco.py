@@ -1,14 +1,7 @@
-import pendulum
 import requests
 from bs4 import BeautifulSoup
 from airflow.decorators import dag, task
-from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
-from airflow.macros import ds_add
-from os.path import join
-import pandas as pd
-import os
+import pendulum
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
@@ -23,50 +16,11 @@ urls = {
 
 @dag(
     schedule='@daily',
-    start_date=pendulum.now('America/Sao_Paulo').subtract(days=5),
-    catchup=True,
+    start_date=pendulum.datetime(2024, 6, 1, tz="UTC"),
+    catchup=False,
 )
-
-def extrair_amazon(url):
-    try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("span", class_="a-price-whole")
-        return float(preco.text.strip().replace(".", "").replace(",", "."))
-    except:
-        return None
-
-def extrair_casas_bahia(url):
-    try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("strong", {"data-testid": "price-value"})
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
-    except:
-        return None
-
-def extrair_magalu(url):
-    try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("p", class_="sc-d79c9c3f-0 kAZgZy")  # classe pode mudar!
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
-    except:
-        return None
-
-def extrair_americanas(url):
-    try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("span", class_="src__BestPrice-sc-1jvw02c-5")
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
-    except:
-        return None
-
-
 def extrai_menor_preco():
-
-    @task()
+    @task
     def extrai_precos():
         precos = {}
         for loja, url in urls.items():
@@ -80,7 +34,7 @@ def extrai_menor_preco():
                 precos["Americanas"] = extrair_americanas(url)
         return precos
 
-    @task()
+    @task
     def salva_precos(precos):
         import json
         from datetime import datetime
@@ -92,4 +46,4 @@ def extrai_menor_preco():
     precos = extrai_precos()
     salva_precos(precos)
 
-extrai_menor_preco()
+dag = extrai_menor_preco()
