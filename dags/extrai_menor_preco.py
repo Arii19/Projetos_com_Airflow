@@ -1,11 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
-from airflow.decorators import dag, task
+import json
 import pendulum
-
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-}
+from datetime import datetime
+from airflow.decorators import dag, task
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import time
 
 urls = {
     "Amazon": "https://www.amazon.com.br/Apple-iPhone-16-Plus-128/dp/B0DGMPCP48",
@@ -14,82 +14,78 @@ urls = {
     "Americanas": "https://www.americanas.com.br/produto/55062209"
 }
 
-# Funções de scraping (uma por loja)
+def iniciar_driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    driver = webdriver.Chrome(options=chrome_options)
+    return driver
 
-def extrair_amazon(url):
+def extrair_preco_amazon(driver, url):
+    driver.get(url)
+    time.sleep(5)
     try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("span", class_="a-price-whole")
-        return float(preco.text.strip().replace(".", "").replace(",", "."))
+        preco = driver.find_element(By.CLASS_NAME, "a-price-whole").text
+        return float(preco.replace(".", "").replace(",", "."))
     except:
         return None
 
-def extrair_casas_bahia(url):
+def extrair_preco_casasbahia(driver, url):
+    driver.get(url)
+    time.sleep(5)
     try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("strong", {"data-testid": "price-value"})
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
+        preco = driver.find_element(By.CSS_SELECTOR, '[data-testid="price-value"]').text
+        return float(preco.replace("R$", "").replace(".", "").replace(",", "."))
     except:
         return None
 
-def extrair_magalu(url):
+def extrair_preco_magalu(driver, url):
+    driver.get(url)
+    time.sleep(5)
     try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("p", class_="sc-d79c9c3f-0 kAZgZy")  # Essa classe pode mudar!
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
+        preco = driver.find_element(By.CLASS_NAME, "sc-d79c9c3f-0").text
+        return float(preco.replace("R$", "").replace(".", "").replace(",", "."))
     except:
         return None
 
-def extrair_americanas(url):
+def extrair_preco_americanas(driver, url):
+    driver.get(url)
+    time.sleep(5)
     try:
-        r = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("span", class_="src__BestPrice-sc-1jvw02c-5")  # Essa classe pode mudar!
-        return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
+        preco = driver.find_element(By.CLASS_NAME, "src__BestPrice-sc-1jvw02c-5").text
+        return float(preco.replace("R$", "").replace(".", "").replace(",", "."))
     except:
         return None
-
-# DAG
 
 @dag(
-    schedule='@daily',
-    start_date=pendulum.datetime(2024, 6, 1, tz="UTC"),
+    schedule="@daily",
+    start_date=pendulum.datetime(2024, 6, 1, tz="America/Sao_Paulo"),
     catchup=False,
-    tags=["monitoramento", "preco", "iphone"]
+    tags=["iphone", "monitoramento", "preco"]
 )
 def extrai_menor_preco():
-    
-    @task
-    def extrai_precos():
-        precos = {}
-        for loja, url in urls.items():
-            if loja == "Amazon":
-                precos["Amazon"] = extrair_amazon(url)
-            elif loja == "CasasBahia":
-                precos["CasasBahia"] = extrair_casas_bahia(url)
-            elif loja == "Magalu":
-                precos["Magalu"] = extrair_magalu(url)
-            elif loja == "Americanas":
-                precos["Americanas"] = extrair_americanas(url)
-                print(f"✅ Preço extraído da {loja}: {precos[loja]}")
+
+    @task()
+    def coletar_precos():
+        driver = iniciar_driver()
+        precos = {
+            "Amazon": extrair_preco_amazon(driver, urls["Amazon"]),
+            "CasasBahia": extrair_preco_casasbahia(driver, urls["CasasBahia"]),
+            "Magalu": extrair_preco_magalu(driver, urls["Magalu"]),
+            "Americanas": extrair_preco_americanas(driver, urls["Americanas"]),
+        }
+        driver.quit()
         return precos
 
-    @task
-    def salva_precos(precos):
-        import json
-        from datetime import datetime
-        data_atual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        precos["data_coleta"] = data_atual
-
-        caminho_arquivo = "/opt/airflow/dags/precos_iphone.json"
-        with open(caminho_arquivo, "a") as f:
+    @task()
+    def salvar_precos(precos: dict):
+        precos["data_coleta"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open("/opt/airflow/dags/precos_iphone.json", "a") as f:
             f.write(json.dumps(precos) + "\n")
-        print(f"✅ Dados salvos em: {caminho_arquivo}")
 
-    precos = extrai_precos()
-    salva_precos(precos)
+    salvar_precos(coletar_precos())
 
 dag = extrai_menor_preco()
