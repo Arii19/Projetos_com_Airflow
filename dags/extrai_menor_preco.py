@@ -14,7 +14,7 @@ urls = {
     "Americanas": "https://www.americanas.com.br/produto/55062209"
 }
 
-# Funções de scraping (devem vir antes da DAG)
+# Funções de scraping (uma por loja)
 
 def extrair_amazon(url):
     try:
@@ -38,7 +38,7 @@ def extrair_magalu(url):
     try:
         r = requests.get(url, headers=headers, timeout=10)
         soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("p", class_="sc-d79c9c3f-0 kAZgZy")  # classe pode mudar
+        preco = soup.find("p", class_="sc-d79c9c3f-0 kAZgZy")  # Essa classe pode mudar!
         return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
     except:
         return None
@@ -47,18 +47,21 @@ def extrair_americanas(url):
     try:
         r = requests.get(url, headers=headers, timeout=10)
         soup = BeautifulSoup(r.text, "lxml")
-        preco = soup.find("span", class_="src__BestPrice-sc-1jvw02c-5")
+        preco = soup.find("span", class_="src__BestPrice-sc-1jvw02c-5")  # Essa classe pode mudar!
         return float(preco.text.strip().replace("R$", "").replace(".", "").replace(",", "."))
     except:
         return None
 
 # DAG
+
 @dag(
     schedule='@daily',
     start_date=pendulum.datetime(2024, 6, 1, tz="UTC"),
     catchup=False,
+    tags=["monitoramento", "preco", "iphone"]
 )
 def extrai_menor_preco():
+    
     @task
     def extrai_precos():
         precos = {}
@@ -71,6 +74,7 @@ def extrai_menor_preco():
                 precos["Magalu"] = extrair_magalu(url)
             elif loja == "Americanas":
                 precos["Americanas"] = extrair_americanas(url)
+                print(f"✅ Preço extraído da {loja}: {precos[loja]}")
         return precos
 
     @task
@@ -79,8 +83,11 @@ def extrai_menor_preco():
         from datetime import datetime
         data_atual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         precos["data_coleta"] = data_atual
-        with open("/opt/airflow/dados/precos_iphone.json", "a") as f:
+
+        caminho_arquivo = "/opt/airflow/dags/precos_iphone.json"
+        with open(caminho_arquivo, "a") as f:
             f.write(json.dumps(precos) + "\n")
+        print(f"✅ Dados salvos em: {caminho_arquivo}")
 
     precos = extrai_precos()
     salva_precos(precos)
