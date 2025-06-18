@@ -21,6 +21,12 @@ urls = {
     "Americanas": "https://www.americanas.com.br/produto/55062209"
 }
 
+@dag(
+    schedule='@daily',
+    start_date=pendulum.now('America/Sao_Paulo').subtract(days=5),
+    catchup=True,
+)
+
 def extrair_amazon(url):
     try:
         r = requests.get(url, headers=headers, timeout=10)
@@ -57,11 +63,8 @@ def extrair_americanas(url):
     except:
         return None
 
-@dag(
-    schedule='@daily',
-    start_date=pendulum.date(2024, 6, 1)
-)
-def main_dag():
+
+def extrai_menor_preco():
 
     @task()
     def extrai_precos():
@@ -89,4 +92,4 @@ def main_dag():
     precos = extrai_precos()
     salva_precos(precos)
 
-main_dag()
+extrai_menor_preco()
