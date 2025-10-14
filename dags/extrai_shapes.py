@@ -16,6 +16,7 @@ import requests
 import os
 import zipfile
 import base64
+import geopandas as gpd
 
 def extract_shp_from_email():
     # 🔹 Variáveis do Airflow
@@ -49,13 +50,15 @@ def extract_shp_from_email():
 
     if not messages:
         print("Nenhum e-mail com anexo encontrado.")
-        return
+        return None
 
     # 🔹 Criar pasta local para salvar os arquivos
     save_dir = "/opt/airflow/dags/files_shp"
     zip_dir = "/opt/airflow/dags/temp_zip"
     os.makedirs(save_dir, exist_ok=True)
     os.makedirs(zip_dir, exist_ok=True)
+
+    shp_files = []  # Lista para armazenar caminhos dos arquivos SHP
 
     for msg in messages:
         msg_id = msg["id"]
@@ -80,14 +83,15 @@ def extract_shp_from_email():
                         f.write(file_content)
                     print(f"Arquivo ZIP salvo temporariamente: {zip_path}")
                     
-                    # Extrai arquivos SHP do ZIP
+                    # Extrai apenas arquivos SHP do ZIP
                     try:
                         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                             for zip_info in zip_ref.infolist():
-                                if zip_info.filename.endswith(('.shp', '.shx', '.dbf', '.prj')):
-                                    # Extrai arquivo SHP e seus componentes
+                                if zip_info.filename.endswith('.shp'):
+                                    # Extrai apenas arquivo SHP
                                     extracted_path = zip_ref.extract(zip_info, save_dir)
-                                    print(f"Arquivo extraído do ZIP: {extracted_path}")
+                                    shp_files.append(extracted_path)
+                                    print(f"Arquivo SHP extraído do ZIP: {extracted_path}")
                     except zipfile.BadZipFile:
                         print(f"Erro: {file_name} não é um arquivo ZIP válido")
                     
@@ -99,6 +103,7 @@ def extract_shp_from_email():
                     file_path = os.path.join(save_dir, file_name)
                     with open(file_path, "wb") as f:
                         f.write(file_content)
+                    shp_files.append(file_path)
                     print(f"Arquivo SHP salvo: {file_path}")
 
     # Remove pasta temporária se estiver vazia
@@ -106,6 +111,32 @@ def extract_shp_from_email():
         os.rmdir(zip_dir)
     except OSError:
         pass
+
+    # 🔹 Carregar arquivos SHP em um DataFrame
+    if shp_files:
+        # Se houver múltiplos arquivos SHP, concatena todos em um DataFrame
+        shp_dataframes = []
+        for shp_file in shp_files:
+            try:
+                df_temp = gpd.read_file(shp_file)
+                df_temp['source_file'] = os.path.basename(shp_file)  # Adiciona coluna com nome do arquivo
+                shp_dataframes.append(df_temp)
+                print(f"Arquivo SHP carregado: {shp_file} - {len(df_temp)} registros")
+            except Exception as e:
+                print(f"Erro ao carregar {shp_file}: {str(e)}")
+        
+        if shp_dataframes:
+            # Concatena todos os DataFrames em um só
+            shp = pd.concat(shp_dataframes, ignore_index=True)
+            print(f"DataFrame 'shp' criado com {len(shp)} registros totais")
+            print(f"Colunas disponíveis: {list(shp.columns)}")
+            return shp
+        else:
+            print("Nenhum arquivo SHP foi carregado com sucesso")
+            return None
+    else:
+        print("Nenhum arquivo SHP encontrado")
+        return None
 
     print("Extração concluída com sucesso ✅")
 
@@ -132,6 +163,7 @@ with DAG(
     extract_task = PythonOperator(
         task_id="extract_shp_from_email",
         python_callable=extract_shp_from_email,
+        do_xcom_push=True,  # Permite que o retorno seja usado em outras tasks
     )
 
     extract_task
