@@ -26,7 +26,7 @@ with DAG(
     @task
     def extract():
         try:
-            url = "https://eonet.gsfc.nasa.gov/api/v2.1/categories/8"
+            url = "https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?status=open"
             response = requests.get(url)
             if response.status_code != 200:
                 raise Exception(f"Erro ao acessar a API: {response.status_code}")
