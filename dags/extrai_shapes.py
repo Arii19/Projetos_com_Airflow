@@ -14,6 +14,8 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 import requests
 import os
+import zipfile
+import base64
 
 def extract_shp_from_email():
     # 🔹 Variáveis do Airflow
@@ -51,7 +53,9 @@ def extract_shp_from_email():
 
     # 🔹 Criar pasta local para salvar os arquivos
     save_dir = "/opt/airflow/dags/files_shp"
+    zip_dir = "/opt/airflow/dags/temp_zip"
     os.makedirs(save_dir, exist_ok=True)
+    os.makedirs(zip_dir, exist_ok=True)
 
     for msg in messages:
         msg_id = msg["id"]
@@ -61,15 +65,47 @@ def extract_shp_from_email():
         attachments = attachments_response.json().get("value", [])
 
         for attachment in attachments:
-            # Verifica se o anexo é um arquivo e se é .shp
-            if attachment["@odata.type"] == "#microsoft.graph.fileAttachment" and attachment["name"].endswith(".shp"):
+            # Verifica se o anexo é um arquivo ZIP ou SHP
+            if attachment["@odata.type"] == "#microsoft.graph.fileAttachment":
                 file_name = attachment["name"]
-                file_content = attachment["contentBytes"]
+                file_content_b64 = attachment["contentBytes"]
+                
+                # Decodifica o conteúdo base64
+                file_content = base64.b64decode(file_content_b64)
+                
+                if file_name.endswith(".zip"):
+                    # Salva o arquivo ZIP temporariamente
+                    zip_path = os.path.join(zip_dir, file_name)
+                    with open(zip_path, "wb") as f:
+                        f.write(file_content)
+                    print(f"Arquivo ZIP salvo temporariamente: {zip_path}")
+                    
+                    # Extrai arquivos SHP do ZIP
+                    try:
+                        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                            for zip_info in zip_ref.infolist():
+                                if zip_info.filename.endswith(('.shp', '.shx', '.dbf', '.prj')):
+                                    # Extrai arquivo SHP e seus componentes
+                                    extracted_path = zip_ref.extract(zip_info, save_dir)
+                                    print(f"Arquivo extraído do ZIP: {extracted_path}")
+                    except zipfile.BadZipFile:
+                        print(f"Erro: {file_name} não é um arquivo ZIP válido")
+                    
+                    # Remove o arquivo ZIP temporário
+                    os.remove(zip_path)
+                    
+                elif file_name.endswith(".shp"):
+                    # Arquivo SHP direto (sem ZIP)
+                    file_path = os.path.join(save_dir, file_name)
+                    with open(file_path, "wb") as f:
+                        f.write(file_content)
+                    print(f"Arquivo SHP salvo: {file_path}")
 
-                file_path = os.path.join(save_dir, file_name)
-                with open(file_path, "wb") as f:
-                    f.write(bytes(file_content, "utf-8"))
-                print(f"Arquivo SHP salvo: {file_path}")
+    # Remove pasta temporária se estiver vazia
+    try:
+        os.rmdir(zip_dir)
+    except OSError:
+        pass
 
     print("Extração concluída com sucesso ✅")
 
@@ -86,11 +122,11 @@ default_args = {
 with DAG(
     dag_id="extract_shp_from_email_microsoft_graph",
     default_args=default_args,
-    description="Extrai arquivos SHP de e-mails usando Microsoft Graph",
+    description="Extrai arquivos SHP de e-mails (ZIP ou diretos) usando Microsoft Graph",
     schedule_interval=None,
     start_date=datetime(2025, 10, 14),
     catchup=False,
-    tags=["microsoft_graph", "shp", "etl"],
+    tags=["microsoft_graph", "shp", "zip", "etl"],
 ) as dag:
 
     extract_task = PythonOperator(
