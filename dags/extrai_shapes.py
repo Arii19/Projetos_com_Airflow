@@ -19,7 +19,7 @@ def extract_shp_from_email():
     # 🔹 Variáveis do Airflow
     client_id = Variable.get("ClientId_MicrosoftGraph_Automacao")
     client_secret = Variable.get("ClientSecret_MicrosoftGraph_Automacao")
-    tenant_id = Variable.get("TenantId_MicrosoftGraph_Automacao")
+    tenant_id = Variable.get("TentantId_MicrosoftGraph_Automacao")
     user_email = Variable.get("Email_MicrosoftGraph_Automacao")
 
     # 🔹 Autenticação no Microsoft Graph
