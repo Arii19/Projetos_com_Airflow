@@ -130,15 +130,44 @@ def extract_shp_from_email():
             shp = pd.concat(shp_dataframes, ignore_index=True)
             print(f"DataFrame 'shp' criado com {len(shp)} registros totais")
             print(f"Colunas disponíveis: {list(shp.columns)}")
-            return shp
+            
+            # Salva o GeoDataFrame como arquivo para uso posterior
+            output_file = "/opt/airflow/dags/processed_shp_data.geojson"
+            shp.to_file(output_file, driver='GeoJSON')
+            print(f"GeoDataFrame salvo em: {output_file}")
+            
+            # Retorna apenas informações serializáveis
+            return {
+                "status": "success",
+                "total_records": len(shp),
+                "columns": list(shp.columns),
+                "source_files": list(shp['source_file'].unique()),
+                "output_file": output_file,
+                "bounds": shp.total_bounds.tolist(),  # Limites geográficos
+                "crs": str(shp.crs)  # Sistema de coordenadas
+            }
         else:
             print("Nenhum arquivo SHP foi carregado com sucesso")
-            return None
+            return {"status": "error", "message": "Nenhum arquivo SHP foi carregado com sucesso"}
     else:
         print("Nenhum arquivo SHP encontrado")
-        return None
+        return {"status": "error", "message": "Nenhum arquivo SHP encontrado"}
 
     print("Extração concluída com sucesso ✅")
+
+def load_processed_shp_data():
+    """
+    Função auxiliar para carregar o GeoDataFrame processado
+    """
+    output_file = "/opt/airflow/dags/processed_shp_data.geojson"
+    if os.path.exists(output_file):
+        shp = gpd.read_file(output_file)
+        print(f"GeoDataFrame carregado: {len(shp)} registros")
+        print(shp)
+        return shp
+    else:
+        print("Arquivo processado não encontrado")
+        return None
 
 # 🔹 Configuração da DAG
 default_args = {
