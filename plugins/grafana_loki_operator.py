@@ -8,7 +8,7 @@ class GrafanaLokiOperator(BaseOperator):
         super().__init__(**kwargs)
         self.name = name
 
-    def SendLog(line: str):
+    def SendLog(self, line: str):
         payload = {
             "streams": [
                 {

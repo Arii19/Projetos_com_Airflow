@@ -1,198 +1,76 @@
- 
+
 from airflow.decorators import dag, task
 import pandas as pd
 from io import StringIO
 from airflow.models import Variable
 from airflow.providers.microsoft.mssql.hooks.mssql import MsSqlHook
 import pendulum
+import sys
+import os
+import glob
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'plugins'))
+from file_operator import FileOperator as fo
 from shapely import wkt
 from airflow.utils.trigger_rule import TriggerRule
-
-from airflow import DAG
-from airflow.models import Variable
-from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
-import requests
-import os
-import zipfile
-import base64
-import geopandas as gpd
-
-def extract_shp_from_email():
-    # 🔹 Variáveis do Airflow
-    client_id = Variable.get("ClientId_MicrosoftGraph_Automacao")
-    client_secret = Variable.get("ClientSecret_MicrosoftGraph_Automacao")
-    tenant_id = Variable.get("TentantId_MicrosoftGraph_Automacao")
-    user_email = Variable.get("Email_MicrosoftGraph_Automacao")
-
-    # 🔹 Autenticação no Microsoft Graph
-    token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
-    token_data = {
-        "client_id": client_id,
-        "client_secret": client_secret,
-        "grant_type": "client_credentials",
-        "scope": "https://graph.microsoft.com/.default",
-    }
-    token_response = requests.post(token_url, data=token_data)
-    token_response.raise_for_status()
-    access_token = token_response.json()["access_token"]
-
-    headers = {"Authorization": f"Bearer {access_token}"}
-
-    # 🔹 Listar mensagens com anexos
-    messages_url = (
-    f"https://graph.microsoft.com/v1.0/users/{user_email}/mailFolders/Inbox/messages?"
-    f"$filter=hasAttachments eq true and isRead eq false"
-)
-    messages_response = requests.get(messages_url, headers=headers)
-    messages_response.raise_for_status()
-    messages = messages_response.json().get("value", [])
-
-    if not messages:
-        print("Nenhum e-mail com anexo encontrado.")
-        return None
-
-    # 🔹 Criar pasta local para salvar os arquivos
-    save_dir = "/opt/airflow/dags/files_shp"
-    zip_dir = "/opt/airflow/dags/temp_zip"
-    os.makedirs(save_dir, exist_ok=True)
-    os.makedirs(zip_dir, exist_ok=True)
-
-    shp_files = []  # Lista para armazenar caminhos dos arquivos SHP
-
-    for msg in messages:
-        msg_id = msg["id"]
-        attachments_url = f"https://graph.microsoft.com/v1.0/users/{user_email}/messages/{msg_id}/attachments"
-        attachments_response = requests.get(attachments_url, headers=headers)
-        attachments_response.raise_for_status()
-        attachments = attachments_response.json().get("value", [])
-
-        for attachment in attachments:
-            # Verifica se o anexo é um arquivo ZIP ou SHP
-            if attachment["@odata.type"] == "#microsoft.graph.fileAttachment":
-                file_name = attachment["name"]
-                file_content_b64 = attachment["contentBytes"]
-                
-                # Decodifica o conteúdo base64
-                file_content = base64.b64decode(file_content_b64)
-                
-                if file_name.endswith(".zip"):
-                    # Salva o arquivo ZIP temporariamente
-                    zip_path = os.path.join(zip_dir, file_name)
-                    with open(zip_path, "wb") as f:
-                        f.write(file_content)
-                    print(f"Arquivo ZIP salvo temporariamente: {zip_path}")
-                    
-                    # Extrai apenas arquivos SHP do ZIP
-                    try:
-                        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                            for zip_info in zip_ref.infolist():
-                                if zip_info.filename.endswith('.shp'):
-                                    # Extrai apenas arquivo SHP
-                                    extracted_path = zip_ref.extract(zip_info, save_dir)
-                                    shp_files.append(extracted_path)
-                                    print(f"Arquivo SHP extraído do ZIP: {extracted_path}")
-                    except zipfile.BadZipFile:
-                        print(f"Erro: {file_name} não é um arquivo ZIP válido")
-                    
-                    # Remove o arquivo ZIP temporário
-                    os.remove(zip_path)
-                    
-                elif file_name.endswith(".shp"):
-                    # Arquivo SHP direto (sem ZIP)
-                    file_path = os.path.join(save_dir, file_name)
-                    with open(file_path, "wb") as f:
-                        f.write(file_content)
-                    shp_files.append(file_path)
-                    print(f"Arquivo SHP salvo: {file_path}")
-
-    # Remove pasta temporária se estiver vazia
-    try:
-        os.rmdir(zip_dir)
-    except OSError:
-        pass
-
-    # 🔹 Carregar arquivos SHP em um DataFrame
-    if shp_files:
-        # Se houver múltiplos arquivos SHP, concatena todos em um DataFrame
-        shp_dataframes = []
-        for shp_file in shp_files:
-            try:
-                df_temp = gpd.read_file(shp_file)
-                df_temp['source_file'] = os.path.basename(shp_file)  # Adiciona coluna com nome do arquivo
-                shp_dataframes.append(df_temp)
-                print(f"Arquivo SHP carregado: {shp_file} - {len(df_temp)} registros")
-            except Exception as e:
-                print(f"Erro ao carregar {shp_file}: {str(e)}")
-        
-        if shp_dataframes:
-            # Concatena todos os DataFrames em um só
-            shp = pd.concat(shp_dataframes, ignore_index=True)
-            print(f"DataFrame 'shp' criado com {len(shp)} registros totais")
-            print(f"Colunas disponíveis: {list(shp.columns)}")
             
-            # Salva o GeoDataFrame como arquivo para uso posterior
-            output_file = "/opt/airflow/dags/processed_shp_data.geojson"
-            shp.to_file(output_file, driver='GeoJSON')
-            print(f"GeoDataFrame salvo em: {output_file}")
-            
-            # Retorna apenas informações serializáveis
-            return {
-                "status": "success",
-                "total_records": len(shp),
-                "columns": list(shp.columns),
-                "source_files": list(shp['source_file'].unique()),
-                "output_file": output_file,
-                "bounds": shp.total_bounds.tolist(),  # Limites geográficos
-                "crs": str(shp.crs)  # Sistema de coordenadas
-            }
-        else:
-            print("Nenhum arquivo SHP foi carregado com sucesso")
-            return {"status": "error", "message": "Nenhum arquivo SHP foi carregado com sucesso"}
-    else:
-        print("Nenhum arquivo SHP encontrado")
-        return {"status": "error", "message": "Nenhum arquivo SHP encontrado"}
 
-    print("Extração concluída com sucesso ✅")
-
-def load_processed_shp_data():
-    """
-    Função auxiliar para carregar o GeoDataFrame processado
-    """
-    output_file = "/opt/airflow/dags/processed_shp_data.geojson"
-    if os.path.exists(output_file):
-        shp = gpd.read_file(output_file)
-        print(f"GeoDataFrame carregado: {len(shp)} registros")
-        print(shp)
-        return shp
-    else:
-        print("Arquivo processado não encontrado")
-        return None
-
-# 🔹 Configuração da DAG
-default_args = {
-    "owner": "airflow",
-    "depends_on_past": False,
-    "email_on_failure": True,
-    "email_on_retry": False,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=2),
-}
-
-with DAG(
-    dag_id="extract_shp_from_email_microsoft_graph",
-    default_args=default_args,
-    description="Extrai arquivos SHP de e-mails (ZIP ou diretos) usando Microsoft Graph",
+@dag(
+    dag_id = 'dag_shp_santaadelia',
     schedule_interval=None,
-    start_date=datetime(2025, 10, 14),
+    start_date=pendulum.datetime(2025, 9, 9, tz='America/Sao_Paulo'),
     catchup=False,
-    tags=["microsoft_graph", "shp", "zip", "etl"],
-) as dag:
+    tags=["ExportacaoShapes", "SQLServer", "API", "MicrosoftGraph", "Extract_Shapes_SantaAdelia"],
+)
+def Importar_ShapeFiles():
 
-    extract_task = PythonOperator(
-        task_id="extract_shp_from_email",
-        python_callable=extract_shp_from_email,
-        do_xcom_push=True,  # Permite que o retorno seja usado em outras tasks
-    )
+    @task
+    def ler_parametro(**context):
+        # Função para ler os parâmetros de ID e email passados na execução da DAG
+        try:
+            ctx = context['dag_run'].conf
+            id = ctx.get('id')
+            email = ctx.get('email')
+            return {"id": id, "email": email}
+        except Exception as e:
+            print('def=ler_parametro log_level=ERRO message="'+str(e)+'"')
+            raise
+ 
+    @task
+    def extract(parametro):
+        # Extração: É utilizado para extrair arquivos shapefiles de um email específico
+        try:
+            # Inicializa o FileOperator para processar emails e extrair anexos ZIP
+            file_operator = fo(download_path="/tmp/arquivos_shp")
+            
+            # Executa o download e extração dos anexos ZIP dos emails não lidos
+            file_operator.download_and_extract_zip_attachments()
+            
+            # Processa os arquivos SHP extraídos
+            shp = []
+        
+            # Busca por todos os arquivos .shp no diretório de download
+            shp_files = glob.glob(os.path.join("/tmp/arquivos_shp", "*.shp"))
+            
+            for shp_file in shp_files:
+                # Lê cada arquivo shapefile usando o método estático
+                shp_data = fo.reader_file_shp(shp_file)
+                shp.append(shp_data)
+            
+            if shp:
+                shp = pd.concat(shp, ignore_index=True)
+                res = shp.groupby('nomearquivo').size().reset_index(name='Quantidade')            
+                shp = shp.to_csv(index=False)  
+                print(f'dag=dag_shp_santaadelia def=extract log_level=INFO message="Extração realizada com sucesso. Arquivos extraídos: {res.to_dict(orient="records")}"')
+                return shp
+            else:
+                print('dag=dag_shp_santaadelia def=extract log_level=WARNING message="Nenhum arquivo shapefile encontrado"')
+                return pd.DataFrame().to_csv(index=False)
+            return shp
+        except Exception as e:
+            print(f'dag=dag_shp_santaadelia def=extract log_level=ERRO message="{str(e)}"')
+            raise
 
-    extract_task
+    parametro = ler_parametro()  
+    shp = extract(parametro)
+
+Importar_ShapeFiles()
